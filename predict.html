@@ -1,0 +1,480 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ISL to Text & Speech</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Consolas&family=Sora:wght@600;700;800&family=Noto+Sans+Kannada:wght@500;700&family=Noto+Sans+Devanagari:wght@500;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg-dark: #0f1117;
+      --cyan-bright: #00ffff;
+      --cyan-sub: #00c8ff;
+      --green-bright: #00ff00;
+      --yellow-bright: #ffe600;
+      --gold-voice: #ffc800;
+      --text-white: #ffffff;
+      --overlay-bg: rgba(22, 24, 30, 0.78);
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      background: var(--bg-dark);
+      color: var(--text-white);
+      font-family: 'Sora', system-ui, -apple-system, sans-serif;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: flex-start;
+      padding: 16px;
+      overflow-x: hidden;
+    }
+
+    /* Window Header */
+    .app-window-bar {
+      width: min(1200px, 96vw);
+      background: #161922;
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      border-bottom: none;
+      border-radius: 14px 14px 0 0;
+      padding: 10px 20px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      font-size: 0.95rem;
+      font-weight: 700;
+      color: #cbd5e1;
+    }
+
+    .window-dots {
+      display: flex;
+      gap: 7px;
+    }
+
+    .dot {
+      width: 11px;
+      height: 11px;
+      border-radius: 50%;
+    }
+    .dot-red { background: #ff5f56; }
+    .dot-yellow { background: #ffbd2e; }
+    .dot-green { background: #27c93f; }
+
+    .conn-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      font-size: 0.82rem;
+      font-weight: 600;
+      color: #34d399;
+      background: rgba(52, 211, 153, 0.1);
+      padding: 3px 10px;
+      border-radius: 9999px;
+      border: 1px solid rgba(52, 211, 153, 0.25);
+    }
+    .status-dot {
+      width: 7px;
+      height: 7px;
+      border-radius: 50%;
+      background: #34d399;
+      box-shadow: 0 0 8px #34d399;
+    }
+
+    /* Main Video Frame & Overlay (Spacious 16:9 Widescreen) */
+    .app-screen-container {
+      width: min(1200px, 96vw);
+      aspect-ratio: 16 / 9;
+      max-height: 76vh;
+      position: relative;
+      background: #000;
+      border: 1px solid rgba(255, 255, 255, 0.15);
+      border-radius: 0 0 14px 14px;
+      overflow: hidden;
+      box-shadow: 0 25px 60px rgba(0, 0, 0, 0.8), 0 0 40px rgba(0, 200, 255, 0.12);
+    }
+
+    #webcam-video {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transform: scaleX(-1);
+      display: block;
+    }
+
+    #landmark-canvas {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      pointer-events: none;
+      /* 1:1 direct coordinate alignment with mirrored camera */
+      transform: none;
+    }
+
+    /* Top Overlay (Sleek translucent glass header - leaves camera open) */
+    .top-overlay {
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      min-height: 56px;
+      background: linear-gradient(180deg, rgba(12, 15, 22, 0.88) 0%, rgba(12, 15, 22, 0.45) 75%, transparent 100%);
+      backdrop-filter: blur(4px);
+      -webkit-backdrop-filter: blur(4px);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 8px 22px;
+      z-index: 10;
+      pointer-events: none;
+    }
+
+    .top-left {
+      display: flex;
+      align-items: baseline;
+      gap: 16px;
+    }
+
+    .sign-label {
+      font-size: clamp(1.4rem, 2.4vw, 1.9rem);
+      font-weight: 800;
+      color: var(--cyan-bright);
+      text-shadow: 0 0 15px rgba(0, 255, 255, 0.5);
+      letter-spacing: 0.02em;
+    }
+
+    .confidence-label {
+      font-size: clamp(0.95rem, 1.5vw, 1.15rem);
+      font-weight: 700;
+      color: var(--green-bright);
+      text-shadow: 0 0 10px rgba(0, 255, 0, 0.4);
+    }
+
+    .top-right {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      pointer-events: auto;
+    }
+
+    .hands-badge {
+      font-size: 0.82rem;
+      font-weight: 700;
+      padding: 4px 10px;
+      border-radius: 9999px;
+      background: rgba(30, 41, 59, 0.8);
+      border: 1px solid rgba(255, 255, 255, 0.15);
+      color: #94a3b8;
+      display: flex;
+      align-items: center;
+      gap: 5px;
+      transition: all 0.2s;
+    }
+
+    .hands-badge.active {
+      background: rgba(0, 255, 0, 0.15);
+      border-color: #22c55e;
+      color: #4ade80;
+      box-shadow: 0 0 10px rgba(34, 197, 94, 0.3);
+    }
+
+    .meter-container {
+      width: 150px;
+      height: 18px;
+      border: 1px solid #4a5568;
+      background: rgba(0, 0, 0, 0.6);
+      border-radius: 4px;
+      overflow: hidden;
+    }
+
+    .meter-fill {
+      height: 100%;
+      width: 0%;
+      background: var(--green-bright);
+      box-shadow: 0 0 10px rgba(0, 255, 0, 0.6);
+      transition: width 0.12s ease-out;
+    }
+
+    .voice-badge {
+      font-size: clamp(0.9rem, 1.4vw, 1.05rem);
+      font-weight: 700;
+      color: var(--gold-voice);
+      text-shadow: 0 0 10px rgba(255, 200, 0, 0.4);
+      cursor: pointer;
+      padding: 4px 10px;
+      border-radius: 6px;
+      border: 1px solid rgba(255, 200, 0, 0.25);
+      background: rgba(255, 200, 0, 0.08);
+      transition: all 0.2s;
+    }
+
+    .voice-badge:hover {
+      background: rgba(255, 200, 0, 0.22);
+      border-color: var(--gold-voice);
+    }
+
+    /* Bottom Overlay (Translucent floating bottom HUD - compact and spacious) */
+    .bottom-overlay {
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      background: linear-gradient(0deg, rgba(12, 15, 22, 0.94) 0%, rgba(12, 15, 22, 0.72) 75%, transparent 100%);
+      backdrop-filter: blur(8px);
+      -webkit-backdrop-filter: blur(8px);
+      border-top: 1px solid rgba(255, 255, 255, 0.08);
+      padding: 10px 22px 8px;
+      z-index: 10;
+      display: flex;
+      flex-direction: column;
+      gap: 4px;
+    }
+
+    /* Line 1: Sentence */
+    .sentence-row {
+      font-size: clamp(1.1rem, 2vw, 1.35rem);
+      font-weight: 700;
+      color: var(--text-white);
+      line-height: 1.3;
+      min-height: 28px;
+      word-break: break-word;
+    }
+
+    .cursor-und {
+      display: inline-block;
+      width: 12px;
+      height: 3px;
+      background: #fff;
+      margin-left: 2px;
+      animation: blink 0.8s infinite;
+      vertical-align: baseline;
+    }
+
+    @keyframes blink { 0%, 100% { opacity: 1; } 50% { opacity: 0; } }
+
+    /* Line 2: Translation */
+    .translation-row {
+      font-size: clamp(1rem, 1.8vw, 1.25rem);
+      font-weight: 700;
+      color: var(--yellow-bright);
+      font-family: 'Noto Sans Kannada', 'Noto Sans Devanagari', 'Sora', sans-serif;
+      min-height: 26px;
+      line-height: 1.3;
+      word-break: break-word;
+      text-shadow: 0 0 10px rgba(255, 230, 0, 0.35);
+    }
+
+    /* Line 3: Suggestions List */
+    .suggestions-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px 12px;
+      min-height: 28px;
+      align-items: center;
+    }
+
+    .sug-item {
+      font-size: clamp(0.85rem, 1.4vw, 1rem);
+      font-weight: 700;
+      color: var(--cyan-sub);
+      cursor: pointer;
+      padding: 2px 8px;
+      border-radius: 6px;
+      border: 1px solid transparent;
+      background: rgba(0, 200, 255, 0.08);
+      transition: background 0.15s, border-color 0.15s;
+    }
+
+    .sug-item:hover {
+      background: rgba(0, 200, 255, 0.25);
+      border-color: var(--cyan-sub);
+    }
+
+    /* Line 4: Pagination */
+    .pagination-row {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      font-size: clamp(0.78rem, 1.3vw, 0.9rem);
+      color: var(--cyan-sub);
+      font-weight: 600;
+      padding: 2px 0;
+    }
+
+    .page-btn {
+      background: rgba(0, 200, 255, 0.15);
+      border: 1px solid rgba(0, 200, 255, 0.4);
+      color: var(--cyan-bright);
+      padding: 2px 10px;
+      border-radius: 6px;
+      font-size: 0.82rem;
+      font-weight: 700;
+      cursor: pointer;
+      transition: all 0.15s;
+    }
+
+    .page-btn:hover:not(:disabled) {
+      background: rgba(0, 200, 255, 0.35);
+      border-color: var(--cyan-bright);
+      transform: translateY(-1px);
+    }
+
+    .page-btn:disabled {
+      opacity: 0.35;
+      cursor: not-allowed;
+    }
+
+    /* Line 5: Status & Keyboard Commands */
+    .status-commands-row {
+      font-size: clamp(0.75rem, 1.2vw, 0.88rem);
+      color: #cbd5e1;
+      font-weight: 500;
+      border-top: 1px solid rgba(255, 255, 255, 0.08);
+      padding-top: 4px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 6px;
+    }
+
+    .key-hint {
+      color: #94a3b8;
+    }
+
+    /* Buttons Toolbar Below Frame */
+    .quick-toolbar {
+      width: min(1200px, 96vw);
+      margin-top: 12px;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      justify-content: center;
+    }
+
+    .btn-control {
+      background: #1e2433;
+      border: 1px solid rgba(255, 255, 255, 0.14);
+      color: #fff;
+      padding: 8px 16px;
+      border-radius: 8px;
+      font-size: 0.88rem;
+      font-weight: 700;
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      transition: all 0.2s;
+    }
+
+    .btn-control:hover {
+      background: #283247;
+      border-color: var(--cyan-sub);
+      transform: translateY(-2px);
+    }
+
+    .btn-speak {
+      background: linear-gradient(135deg, #2563eb, #7c3aed);
+      border-color: transparent;
+      box-shadow: 0 4px 15px rgba(37, 99, 235, 0.4);
+    }
+
+    .btn-speak:hover {
+      box-shadow: 0 6px 20px rgba(124, 58, 237, 0.5);
+    }
+  </style>
+</head>
+<body>
+
+  <!-- App Window Titlebar -->
+  <div class="app-window-bar">
+    <div style="display: flex; align-items: center; gap: 10px;">
+      <a href="/" style="display: inline-flex; align-items: center; gap: 6px; color: #cbd5e1; text-decoration: none; font-size: 0.85rem; font-weight: 700; padding: 4px 10px; border-radius: 6px; background: rgba(255,255,255,0.08); border: 1px solid rgba(255,255,255,0.14); transition: all 0.2s;" onmouseover="this.style.background='rgba(56,189,248,0.2)';this.style.color='#38bdf8'" onmouseout="this.style.background='rgba(255,255,255,0.08)';this.style.color='#cbd5e1'">
+        ← Home
+      </a>
+      <a href="/quiz" style="display: inline-flex; align-items: center; gap: 6px; color: #00ffff; text-decoration: none; font-size: 0.85rem; font-weight: 700; padding: 4px 12px; border-radius: 6px; background: rgba(0,240,255,0.12); border: 1px solid rgba(0,240,255,0.35); transition: all 0.2s;" onmouseover="this.style.background='rgba(0,240,255,0.25)'" onmouseout="this.style.background='rgba(0,240,255,0.12)'">
+        🎯 26-Letter Quiz
+      </a>
+      <a href="/lessons" style="display: inline-flex; align-items: center; gap: 6px; color: #c084fc; text-decoration: none; font-size: 0.85rem; font-weight: 700; padding: 4px 12px; border-radius: 6px; background: rgba(147,51,234,0.15); border: 1px solid rgba(147,51,234,0.4); transition: all 0.2s;" onmouseover="this.style.background='rgba(147,51,234,0.3)'" onmouseout="this.style.background='rgba(147,51,234,0.15)'">
+        🎥 10 Video Lessons
+      </a>
+      <div class="window-dots">
+        <div class="dot dot-red"></div>
+        <div class="dot dot-yellow"></div>
+        <div class="dot dot-green"></div>
+      </div>
+    </div>
+    <span>ISL to Text & Speech Studio</span>
+    <div class="conn-badge" id="conn-status">
+      <span class="status-dot"></span>
+      <span id="conn-text">Backend Connected</span>
+    </div>
+  </div>
+
+  <!-- Screen Viewport with Top & Bottom Overlays (Exact app.py layout) -->
+  <div class="app-screen-container">
+    <video id="webcam-video" autoplay playsinline muted></video>
+    <canvas id="landmark-canvas"></canvas>
+
+    <!-- TOP OVERLAY -->
+    <div class="top-overlay">
+      <div class="top-left">
+        <div class="sign-label" id="sign-text">Sign: -</div>
+        <div class="confidence-label" id="conf-text">Confidence: 0%</div>
+      </div>
+      <div class="top-right">
+        <div class="hands-badge" id="hands-badge">🖐️ 0 Hands</div>
+        <div class="meter-container">
+          <div class="meter-fill" id="meter-fill"></div>
+        </div>
+        <div class="voice-badge" id="voice-btn" title="Click or press L to change language">Voice: English</div>
+      </div>
+    </div>
+
+    <!-- BOTTOM OVERLAY -->
+    <div class="bottom-overlay">
+      <!-- Sentence Line -->
+      <div class="sentence-row">
+        <span id="sentence-text"></span><span class="cursor-und"></span>
+      </div>
+
+      <!-- Kannada / Hindi Translation Preview Line -->
+      <div class="translation-row" id="translation-text"></div>
+
+      <!-- Suggestions Line -->
+      <div class="suggestions-row" id="suggestions-row"></div>
+
+      <!-- Pagination Line -->
+      <div class="pagination-row">
+        <button class="page-btn" id="btn-prev-page">◄ Prev (P)</button>
+        <span id="page-info">0 words | page 1/1 (N next, P prev)</span>
+        <button class="page-btn" id="btn-next-page">Next (N) ►</button>
+      </div>
+
+      <!-- Commands & Status Footer Line -->
+      <div class="status-commands-row">
+        <span id="status-text">Ready</span>
+        <span class="key-hint">S speak | R replay | L lang | 1-9 pick | B back | C clear</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- Interactive Quick Toolbar -->
+  <div class="quick-toolbar">
+    <button class="btn-control btn-speak" id="btn-speak">🔊 Speak [S]</button>
+    <button class="btn-control" id="btn-replay">↺ Replay [R]</button>
+    <button class="btn-control" id="btn-lang">🌐 Voice [L]</button>
+    <button class="btn-control" id="btn-space">Space ⎵</button>
+    <button class="btn-control" id="btn-back">⌫ Backspace [B]</button>
+    <button class="btn-control" id="btn-clear">✕ Clear [C]</button>
+    <button class="btn-control" id="btn-cam">Pause Camera</button>
+    <a href="/quiz" class="btn-control" style="background: rgba(0, 240, 255, 0.15); border-color: rgba(0, 240, 255, 0.4); color: #00ffff; text-decoration: none;">🎯 Take Sign Quiz</a>
+  </div>
+
+  <script src="predict.js"></script>
+</body>
+</html>

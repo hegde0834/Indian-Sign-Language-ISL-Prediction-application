@@ -1,0 +1,237 @@
+[
+  {
+    "letter": "A",
+    "name": "Letter A",
+    "category": "Vowel",
+    "is_vowel": true,
+    "image": "/assets/images/quiz_letters/a.jpg",
+    "description": "Both hands form clenched fists with both thumbs pointing upwards and touching at their tips.",
+    "tips": "Touch your thumb tips together firmly while keeping other fingers tucked in closed fists."
+  },
+  {
+    "letter": "B",
+    "name": "Letter B",
+    "category": "Consonant",
+    "is_vowel": false,
+    "image": "/assets/images/quiz_letters/b.jpg",
+    "description": "Both hands join index fingers and thumbs into two touching circular loops (resembling eyeglasses or the letter 'B').",
+    "tips": "Make two 'O' circles with thumb and index finger on each hand and touch the circles together."
+  },
+  {
+    "letter": "C",
+    "name": "Letter C",
+    "category": "Consonant",
+    "is_vowel": false,
+    "image": "/assets/images/quiz_letters/c.jpg",
+    "description": "One hand curves all fingers and the thumb into a distinct, open 'C' shape facing sideways.",
+    "tips": "Curve your palm and fingers into an open arc, holding your hand sideways to the camera."
+  },
+  {
+    "letter": "D",
+    "name": "Letter D",
+    "category": "Consonant",
+    "is_vowel": false,
+    "image": "/assets/images/quiz_letters/d.jpg",
+    "description": "Left index finger points upward while the right hand curves its index finger and thumb to meet it, forming the upright 'D'.",
+    "tips": "Hold left index finger straight up as the vertical stem; curve right thumb and index into a semicircle touching the left index."
+  },
+  {
+    "letter": "E",
+    "name": "Letter E",
+    "category": "Vowel",
+    "is_vowel": true,
+    "image": "/assets/images/quiz_letters/e.jpg",
+    "description": "Left hand held open with fingers spread; the right index finger touches the tip of the left index finger (first vowel).",
+    "tips": "Touch the tip of your left index finger with your right index finger."
+  },
+  {
+    "letter": "F",
+    "name": "Letter F",
+    "category": "Consonant",
+    "is_vowel": false,
+    "image": "/assets/images/quiz_letters/f.jpg",
+    "description": "Two fingers (index and middle) on both hands cross horizontally over one another in a crossbar formation.",
+    "tips": "Extend index and middle fingers on both hands and lay one pair across the other like a cross."
+  },
+  {
+    "letter": "G",
+    "name": "Letter G",
+    "category": "Consonant",
+    "is_vowel": false,
+    "image": "/assets/images/quiz_letters/g.jpg",
+    "description": "Both hands clenched in fists placed horizontally next to each other, knuckles aligned.",
+    "tips": "Clench both fists and place them side-by-side with knuckles facing forward."
+  },
+  {
+    "letter": "H",
+    "name": "Letter H",
+    "category": "Consonant",
+    "is_vowel": false,
+    "image": "/assets/images/quiz_letters/h.jpg",
+    "description": "Right hand flat with fingers straight, resting horizontally across the flat upward-facing palm of the left hand.",
+    "tips": "Lay your flat right palm crosswise on top of your flat left palm."
+  },
+  {
+    "letter": "I",
+    "name": "Letter I",
+    "category": "Vowel",
+    "is_vowel": true,
+    "image": "/assets/images/quiz_letters/i.jpg",
+    "description": "Left hand held open with fingers spread; the right index finger touches the tip of the left middle finger (second vowel).",
+    "tips": "Point your right index finger directly at the tip of your left middle finger."
+  },
+  {
+    "letter": "J",
+    "name": "Letter J",
+    "category": "Consonant",
+    "is_vowel": false,
+    "image": "/assets/images/quiz_letters/j.jpg",
+    "description": "Right index finger touches the tip of the left middle finger and traces the curve of the letter 'J' down onto the palm.",
+    "tips": "Start at the tip of the left middle finger and trace a hook downward across the palm."
+  },
+  {
+    "letter": "K",
+    "name": "Letter K",
+    "category": "Consonant",
+    "is_vowel": false,
+    "image": "/assets/images/quiz_letters/k.jpg",
+    "description": "Left index finger held straight up; the right index finger curves and hooks against the left index knuckle.",
+    "tips": "Left index points upward; right index forms a hook pressing against the middle joint of the left index."
+  },
+  {
+    "letter": "L",
+    "name": "Letter L",
+    "category": "Consonant",
+    "is_vowel": false,
+    "image": "/assets/images/quiz_letters/l.jpg",
+    "description": "One hand forms a clean 90-degree right angle between the extended thumb and index finger, with other fingers curled.",
+    "tips": "Extend thumb outward and index finger upward to form a sharp 'L' angle."
+  },
+  {
+    "letter": "M",
+    "name": "Letter M",
+    "category": "Consonant",
+    "is_vowel": false,
+    "image": "/assets/images/quiz_letters/m.jpg",
+    "description": "Right hand places three extended fingertips (index, middle, ring) downwards onto the open flat palm of the left hand.",
+    "tips": "Rest three fingertips (index, middle, ring) of your right hand downward on your flat left palm."
+  },
+  {
+    "letter": "N",
+    "name": "Letter N",
+    "category": "Consonant",
+    "is_vowel": false,
+    "image": "/assets/images/quiz_letters/n.jpg",
+    "description": "Right hand places two extended fingertips (index and middle) downwards onto the open flat palm of the left hand.",
+    "tips": "Rest two fingertips (index and middle) of your right hand downward on your flat left palm."
+  },
+  {
+    "letter": "O",
+    "name": "Letter O",
+    "category": "Vowel",
+    "is_vowel": true,
+    "image": "/assets/images/quiz_letters/o.jpg",
+    "description": "Left hand held open with fingers spread; the right index finger touches the tip of the left ring finger (fourth vowel).",
+    "tips": "Touch the tip of your left ring finger with the tip of your right index finger."
+  },
+  {
+    "letter": "P",
+    "name": "Letter P",
+    "category": "Consonant",
+    "is_vowel": false,
+    "image": "/assets/images/quiz_letters/p.jpg",
+    "description": "Left index finger points vertically upward; right index finger and thumb form a loop touching near the top of the left index.",
+    "tips": "Left index finger held vertical; right thumb and index make a circular loop touching the upper left index finger."
+  },
+  {
+    "letter": "Q",
+    "name": "Letter Q",
+    "category": "Consonant",
+    "is_vowel": false,
+    "image": "/assets/images/quiz_letters/q.jpg",
+    "description": "Left hand forms a circular loop with thumb and index finger; the right index finger hooks into the loop from above.",
+    "tips": "Make a circle with left thumb and index; hook your right index finger into the circle from the top."
+  },
+  {
+    "letter": "R",
+    "name": "Letter R",
+    "category": "Consonant",
+    "is_vowel": false,
+    "image": "/assets/images/quiz_letters/r.jpg",
+    "description": "Right index finger curled into a gentle hook shape and placed horizontally against the open palm of the left hand.",
+    "tips": "Curl right index finger into a ring/hook and place it flat against your open left palm."
+  },
+  {
+    "letter": "S",
+    "name": "Letter S",
+    "category": "Consonant",
+    "is_vowel": false,
+    "image": "/assets/images/quiz_letters/s.jpg",
+    "description": "Both hands hook their little fingers (pinkies) together securely in a linked lock.",
+    "tips": "Extend both pinky fingers and hook them tightly together while tucking other fingers in."
+  },
+  {
+    "letter": "T",
+    "name": "Letter T",
+    "category": "Consonant",
+    "is_vowel": false,
+    "image": "/assets/images/quiz_letters/t.jpg",
+    "description": "Right extended index finger touches perpendicular to the outer edge of the upright left hand.",
+    "tips": "Keep left hand open vertically; touch your right index finger horizontally against its outer palm edge."
+  },
+  {
+    "letter": "U",
+    "name": "Letter U",
+    "category": "Vowel",
+    "is_vowel": true,
+    "image": "/assets/images/quiz_letters/u.jpg",
+    "description": "Left hand held open with fingers spread; the right index finger touches the tip of the left little finger (fifth vowel).",
+    "tips": "Touch the tip of your left pinky finger with the tip of your right index finger."
+  },
+  {
+    "letter": "V",
+    "name": "Letter V",
+    "category": "Consonant",
+    "is_vowel": false,
+    "image": "/assets/images/quiz_letters/v.jpg",
+    "description": "Right hand forms a distinct 'V' victory shape with index and middle fingers, resting gently on the open palm of the left hand.",
+    "tips": "Make a 'V' peace sign with right index and middle fingers, and set their tips onto your open left palm."
+  },
+  {
+    "letter": "W",
+    "name": "Letter W",
+    "category": "Consonant",
+    "is_vowel": false,
+    "image": "/assets/images/quiz_letters/w.jpg",
+    "description": "Both hands interlock all fingers diagonally with fingertips pointing upward in a weave.",
+    "tips": "Intertwine the fingers of both hands together pointing diagonally upwards like a basket weave."
+  },
+  {
+    "letter": "X",
+    "name": "Letter X",
+    "category": "Consonant",
+    "is_vowel": false,
+    "image": "/assets/images/quiz_letters/x.jpg",
+    "description": "Both index fingers are extended and crossed over each other at their midpoints to form an 'X'.",
+    "tips": "Extend both index fingers and cross them across each other to make a crisp 'X' cross."
+  },
+  {
+    "letter": "Y",
+    "name": "Letter Y",
+    "category": "Consonant",
+    "is_vowel": false,
+    "image": "/assets/images/quiz_letters/y.jpg",
+    "description": "Right extended index finger touches directly into the cleft (V-space) between the thumb and index finger of the left open hand.",
+    "tips": "Open left hand with thumb wide; touch right index finger right into the web between left thumb and index."
+  },
+  {
+    "letter": "Z",
+    "name": "Letter Z",
+    "category": "Consonant",
+    "is_vowel": false,
+    "image": "/assets/images/quiz_letters/z.jpg",
+    "description": "Left open palm held vertical with fingertips pointing upward; right fingertips touch horizontally against the left palm surface.",
+    "tips": "Hold left hand open facing sideways; place your right fingertips horizontally flat against the left palm."
+  }
+]
+

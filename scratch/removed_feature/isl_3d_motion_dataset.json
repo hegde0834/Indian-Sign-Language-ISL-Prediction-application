@@ -1,0 +1,649 @@
+{
+  "metadata": {
+    "title": "ISL 3D Skeletal Motion & Sign Gesture Dataset",
+    "version": "2.0.0",
+    "description": "Parametric 3D kinematic keyframe and skeletal landmark dataset for 10 Indian Sign Language everyday phrases, designed for real-time 3D avatar rendering without external video dependencies.",
+    "total_phrases": 10,
+    "target_fps": 60,
+    "coordinate_system": "Right-handed 3D Cartesian (Normalized meters)"
+  },
+  "phrases": [
+    {
+      "id": 1,
+      "key": "hello_namaste",
+      "phrase": "Hello / Namaste",
+      "category": "Greeting",
+      "translations": {
+        "en": "Hello / Welcome",
+        "hi": "नमस्ते / नमस्कार",
+        "kn": "ನಮಸ್ಕಾರ / ಸುಸ್ವಾಗತ"
+      },
+      "keywords": [
+        "hello", "namaste", "namaskar", "hi", "hey", "welcome", "greetings", "namaskara",
+        "नमस्ते", "नमस्कार", "प्रणाम", "ಹಲೋ", "ನಮಸ್ಕಾರ", "ಸುಸ್ವಾಗತ"
+      ],
+      "sign_overview": "Respectful prayer greeting (Namaste). Both palms rise smoothly to the sternum, pressing together with a gentle forward head bow and warm smile.",
+      "components": {
+        "handshape": "B-Handshape (Both palms open flat, fingers together, thumbs aligned)",
+        "location": "Center of Chest / Sternum (Midline)",
+        "movement": "Symmetrical bilateral lift towards midline, gentle hold",
+        "expression": "Warm engaging smile with a 15-degree polite forward head bow"
+      },
+      "keyframes": [
+        {
+          "step": 1,
+          "name": "Resting Neutral",
+          "duration": 400,
+          "right_arm": { "sx": 0.1, "sy": 0.0, "sz": -0.2, "elbow": 0.3, "wx": 0.0, "wy": 0.0, "wz": 0.0 },
+          "left_arm": { "sx": 0.1, "sy": 0.0, "sz": 0.2, "elbow": 0.3, "wx": 0.0, "wy": 0.0, "wz": 0.0 },
+          "right_hand": { "thumb": 0.2, "index": 0.2, "middle": 0.2, "ring": 0.2, "pinky": 0.2, "spread": 0.1, "shape": "relaxed" },
+          "left_hand": { "thumb": 0.2, "index": 0.2, "middle": 0.2, "ring": 0.2, "pinky": 0.2, "spread": 0.1, "shape": "relaxed" },
+          "head": { "pitch": 0.0, "yaw": 0.0, "roll": 0.0, "eyebrows": "neutral", "mouth": "smile" }
+        },
+        {
+          "step": 2,
+          "name": "Raise Palms to Chest",
+          "duration": 600,
+          "right_arm": { "sx": -0.5, "sy": 0.35, "sz": 0.45, "elbow": 1.4, "wx": 0.1, "wy": 0.4, "wz": 0.1 },
+          "left_arm": { "sx": -0.5, "sy": -0.35, "sz": -0.45, "elbow": 1.4, "wx": 0.1, "wy": -0.4, "wz": -0.1 },
+          "right_hand": { "thumb": 0.0, "index": 0.0, "middle": 0.0, "ring": 0.0, "pinky": 0.0, "spread": 0.0, "shape": "B-flat" },
+          "left_hand": { "thumb": 0.0, "index": 0.0, "middle": 0.0, "ring": 0.0, "pinky": 0.0, "spread": 0.0, "shape": "B-flat" },
+          "head": { "pitch": 0.05, "yaw": 0.0, "roll": 0.0, "eyebrows": "neutral", "mouth": "smile" }
+        },
+        {
+          "step": 3,
+          "name": "Namaste Prayer Posture & Bow",
+          "duration": 1200,
+          "right_arm": { "sx": -0.65, "sy": 0.5, "sz": 0.55, "elbow": 1.75, "wx": 0.0, "wy": 0.55, "wz": 0.0 },
+          "left_arm": { "sx": -0.65, "sy": -0.5, "sz": -0.55, "elbow": 1.75, "wx": 0.0, "wy": -0.55, "wz": 0.0 },
+          "right_hand": { "thumb": 0.0, "index": 0.0, "middle": 0.0, "ring": 0.0, "pinky": 0.0, "spread": 0.0, "shape": "prayer" },
+          "left_hand": { "thumb": 0.0, "index": 0.0, "middle": 0.0, "ring": 0.0, "pinky": 0.0, "spread": 0.0, "shape": "prayer" },
+          "head": { "pitch": 0.22, "yaw": 0.0, "roll": 0.0, "eyebrows": "neutral", "mouth": "warm-smile" }
+        },
+        {
+          "step": 4,
+          "name": "Graceful Return to Neutral",
+          "duration": 700,
+          "right_arm": { "sx": 0.1, "sy": 0.0, "sz": -0.2, "elbow": 0.35, "wx": 0.0, "wy": 0.0, "wz": 0.0 },
+          "left_arm": { "sx": 0.1, "sy": 0.0, "sz": 0.2, "elbow": 0.35, "wx": 0.0, "wy": 0.0, "wz": 0.0 },
+          "right_hand": { "thumb": 0.2, "index": 0.2, "middle": 0.2, "ring": 0.2, "pinky": 0.2, "spread": 0.1, "shape": "relaxed" },
+          "left_hand": { "thumb": 0.2, "index": 0.2, "middle": 0.2, "ring": 0.2, "pinky": 0.2, "spread": 0.1, "shape": "relaxed" },
+          "head": { "pitch": 0.0, "yaw": 0.0, "roll": 0.0, "eyebrows": "neutral", "mouth": "smile" }
+        }
+      ]
+    },
+    {
+      "id": 2,
+      "key": "thank_you",
+      "phrase": "Thank You",
+      "category": "Courtesy",
+      "translations": {
+        "en": "Thank You",
+        "hi": "धन्यवाद / शुक्रिया",
+        "kn": "ಧನ್ಯವಾದಗಳು"
+      },
+      "keywords": [
+        "thank you", "thanks", "thank", "dhanyavad", "shukriya", "gratitude", "dhanyavadagalu",
+        "धन्यवाद", "शुक्रिया", "ಧನ್ಯವಾದಗಳು", "ಧನ್ಯವಾದ"
+      ],
+      "sign_overview": "Gratitude sign: Dominant flat fingertips touch chin/lower lip, then sweep smoothly forward and down toward the listener with an appreciative nod.",
+      "components": {
+        "handshape": "Flat Open Hand (Dominant Right Hand), non-dominant rests",
+        "location": "Chin / Lower Lip moving to Forward Neutral Space",
+        "movement": "Forward-downward arc toward listener",
+        "expression": "Appreciative smile with an affirmative downward nod"
+      },
+      "keyframes": [
+        {
+          "step": 1,
+          "name": "Touch Fingertips to Chin",
+          "duration": 600,
+          "right_arm": { "sx": -0.85, "sy": 0.1, "sz": 0.3, "elbow": 2.05, "wx": 0.4, "wy": 0.1, "wz": 0.0 },
+          "left_arm": { "sx": 0.1, "sy": 0.0, "sz": 0.2, "elbow": 0.3, "wx": 0.0, "wy": 0.0, "wz": 0.0 },
+          "right_hand": { "thumb": 0.0, "index": 0.0, "middle": 0.0, "ring": 0.0, "pinky": 0.0, "spread": 0.0, "shape": "B-flat" },
+          "left_hand": { "thumb": 0.2, "index": 0.2, "middle": 0.2, "ring": 0.2, "pinky": 0.2, "spread": 0.1, "shape": "relaxed" },
+          "head": { "pitch": 0.05, "yaw": 0.0, "roll": 0.0, "eyebrows": "neutral", "mouth": "smile" }
+        },
+        {
+          "step": 2,
+          "name": "Arc Forward Towards Listener",
+          "duration": 900,
+          "right_arm": { "sx": -0.45, "sy": 0.1, "sz": 0.25, "elbow": 0.85, "wx": -0.2, "wy": 0.0, "wz": 0.0 },
+          "left_arm": { "sx": 0.1, "sy": 0.0, "sz": 0.2, "elbow": 0.3, "wx": 0.0, "wy": 0.0, "wz": 0.0 },
+          "right_hand": { "thumb": 0.0, "index": 0.0, "middle": 0.0, "ring": 0.0, "pinky": 0.0, "spread": 0.05, "shape": "B-flat" },
+          "left_hand": { "thumb": 0.2, "index": 0.2, "middle": 0.2, "ring": 0.2, "pinky": 0.2, "spread": 0.1, "shape": "relaxed" },
+          "head": { "pitch": 0.18, "yaw": 0.0, "roll": 0.0, "eyebrows": "neutral", "mouth": "grateful-smile" }
+        },
+        {
+          "step": 3,
+          "name": "Return to Neutral",
+          "duration": 600,
+          "right_arm": { "sx": 0.1, "sy": 0.0, "sz": -0.2, "elbow": 0.35, "wx": 0.0, "wy": 0.0, "wz": 0.0 },
+          "left_arm": { "sx": 0.1, "sy": 0.0, "sz": 0.2, "elbow": 0.35, "wx": 0.0, "wy": 0.0, "wz": 0.0 },
+          "right_hand": { "thumb": 0.2, "index": 0.2, "middle": 0.2, "ring": 0.2, "pinky": 0.2, "spread": 0.1, "shape": "relaxed" },
+          "left_hand": { "thumb": 0.2, "index": 0.2, "middle": 0.2, "ring": 0.2, "pinky": 0.2, "spread": 0.1, "shape": "relaxed" },
+          "head": { "pitch": 0.0, "yaw": 0.0, "roll": 0.0, "eyebrows": "neutral", "mouth": "smile" }
+        }
+      ]
+    },
+    {
+      "id": 3,
+      "key": "how_are_you",
+      "phrase": "How Are You?",
+      "category": "Conversation",
+      "translations": {
+        "en": "How are you?",
+        "hi": "आप कैसे हैं?",
+        "kn": "ನೀವು ಹೇಗಿದ್ದೀರಾ?"
+      },
+      "keywords": [
+        "how are you", "how are u", "how r u", "how do you do", "aap kaise hain", "kaisa hai",
+        "kya haal hai", "neevu hegiddeera", "hegiddira", "hegidiya",
+        "ನೀವು ಹೇಗಿದ್ದೀರಾ", "ಹೇಗಿದ್ದೀರಾ", "ನೀವು ಹೇಗಿದ್ದೀರಿ", "आप कैसे हैं", "कैसा है"
+      ],
+      "sign_overview": "Wellness inquiry: Both thumbs-up fists raise to chest, roll outwards with palms turning up, followed by dominant index finger pointing at the person with inquiring raised eyebrows.",
+      "components": {
+        "handshape": "Thumbs-Up Fists transitioning to Dominant Index Point",
+        "location": "Mid-Chest to Forward Interactive Space",
+        "movement": "Outward bilateral roll + Forward index point",
+        "expression": "Inquisitive raised eyebrows with a slight forward head tilt"
+      },
+      "keyframes": [
+        {
+          "step": 1,
+          "name": "Bilateral Thumbs-Up at Chest",
+          "duration": 600,
+          "right_arm": { "sx": -0.5, "sy": 0.2, "sz": 0.3, "elbow": 1.45, "wx": 0.0, "wy": -0.6, "wz": 0.0 },
+          "left_arm": { "sx": -0.5, "sy": -0.2, "sz": -0.3, "elbow": 1.45, "wx": 0.0, "wy": 0.6, "wz": 0.0 },
+          "right_hand": { "thumb": 0.0, "index": 1.0, "middle": 1.0, "ring": 1.0, "pinky": 1.0, "spread": 0.0, "shape": "thumbs-up" },
+          "left_hand": { "thumb": 0.0, "index": 1.0, "middle": 1.0, "ring": 1.0, "pinky": 1.0, "spread": 0.0, "shape": "thumbs-up" },
+          "head": { "pitch": -0.05, "yaw": 0.0, "roll": 0.0, "eyebrows": "raised", "mouth": "neutral" }
+        },
+        {
+          "step": 2,
+          "name": "Roll Palms Upward",
+          "duration": 500,
+          "right_arm": { "sx": -0.4, "sy": 0.25, "sz": 0.35, "elbow": 1.25, "wx": 0.2, "wy": 0.2, "wz": 0.0 },
+          "left_arm": { "sx": -0.4, "sy": -0.25, "sz": -0.35, "elbow": 1.25, "wx": 0.2, "wy": -0.2, "wz": 0.0 },
+          "right_hand": { "thumb": 0.0, "index": 0.1, "middle": 0.1, "ring": 0.1, "pinky": 0.1, "spread": 0.2, "shape": "open-palms" },
+          "left_hand": { "thumb": 0.0, "index": 0.1, "middle": 0.1, "ring": 0.1, "pinky": 0.1, "spread": 0.2, "shape": "open-palms" },
+          "head": { "pitch": 0.0, "yaw": 0.05, "roll": 0.05, "eyebrows": "raised", "mouth": "question" }
+        },
+        {
+          "step": 3,
+          "name": "Point Forward at Viewer (YOU)",
+          "duration": 900,
+          "right_arm": { "sx": -0.65, "sy": 0.05, "sz": 0.15, "elbow": 0.65, "wx": 0.0, "wy": 0.0, "wz": 0.0 },
+          "left_arm": { "sx": 0.1, "sy": 0.0, "sz": 0.2, "elbow": 0.35, "wx": 0.0, "wy": 0.0, "wz": 0.0 },
+          "right_hand": { "thumb": 0.8, "index": 0.0, "middle": 1.0, "ring": 1.0, "pinky": 1.0, "spread": 0.0, "shape": "point" },
+          "left_hand": { "thumb": 0.2, "index": 0.2, "middle": 0.2, "ring": 0.2, "pinky": 0.2, "spread": 0.1, "shape": "relaxed" },
+          "head": { "pitch": 0.08, "yaw": 0.08, "roll": 0.06, "eyebrows": "raised", "mouth": "smile" }
+        },
+        {
+          "step": 4,
+          "name": "Return to Neutral",
+          "duration": 500,
+          "right_arm": { "sx": 0.1, "sy": 0.0, "sz": -0.2, "elbow": 0.35, "wx": 0.0, "wy": 0.0, "wz": 0.0 },
+          "left_arm": { "sx": 0.1, "sy": 0.0, "sz": 0.2, "elbow": 0.35, "wx": 0.0, "wy": 0.0, "wz": 0.0 },
+          "right_hand": { "thumb": 0.2, "index": 0.2, "middle": 0.2, "ring": 0.2, "pinky": 0.2, "spread": 0.1, "shape": "relaxed" },
+          "left_hand": { "thumb": 0.2, "index": 0.2, "middle": 0.2, "ring": 0.2, "pinky": 0.2, "spread": 0.1, "shape": "relaxed" },
+          "head": { "pitch": 0.0, "yaw": 0.0, "roll": 0.0, "eyebrows": "neutral", "mouth": "neutral" }
+        }
+      ]
+    },
+    {
+      "id": 4,
+      "key": "i_am_fine",
+      "phrase": "I Am Fine",
+      "category": "Conversation",
+      "translations": {
+        "en": "I am fine / Doing well",
+        "hi": "मैं ठीक हूँ",
+        "kn": "ನಾನು ಚೆನ್ನಾಗಿದ್ದೇನೆ"
+      },
+      "keywords": [
+        "i am fine", "im fine", "i am good", "fine", "doing well", "all good",
+        "theek hoon", "sab theek", "chennagi iddene", "chennagidene",
+        "ನಾನು ಚೆನ್ನಾಗಿದ್ದೇನೆ", "ಚೆನ್ನಾಗಿದ್ದೀನಿ", "मैं ठीक हूँ", "सब ठीक है"
+      ],
+      "sign_overview": "Reassurance sign: Dominant thumbs-up hand taps the upper chest twice rhythmically with a confident affirmative nod.",
+      "components": {
+        "handshape": "Dominant Thumbs-Up Fist (A-hand with upright thumb)",
+        "location": "Upper Sternum / Chest",
+        "movement": "Double gentle rhythmic tap against chest",
+        "expression": "Relaxed affirmative smile with confident downward nod"
+      },
+      "keyframes": [
+        {
+          "step": 1,
+          "name": "First Chest Tap",
+          "duration": 500,
+          "right_arm": { "sx": -0.65, "sy": 0.3, "sz": 0.2, "elbow": 1.75, "wx": 0.1, "wy": 0.0, "wz": 0.0 },
+          "left_arm": { "sx": 0.1, "sy": 0.0, "sz": 0.2, "elbow": 0.3, "wx": 0.0, "wy": 0.0, "wz": 0.0 },
+          "right_hand": { "thumb": 0.0, "index": 1.0, "middle": 1.0, "ring": 1.0, "pinky": 1.0, "spread": 0.0, "shape": "thumbs-up" },
+          "left_hand": { "thumb": 0.2, "index": 0.2, "middle": 0.2, "ring": 0.2, "pinky": 0.2, "spread": 0.1, "shape": "relaxed" },
+          "head": { "pitch": 0.12, "yaw": 0.0, "roll": 0.0, "eyebrows": "neutral", "mouth": "smile" }
+        },
+        {
+          "step": 2,
+          "name": "Slight Rebound",
+          "duration": 300,
+          "right_arm": { "sx": -0.55, "sy": 0.28, "sz": 0.25, "elbow": 1.55, "wx": 0.1, "wy": 0.0, "wz": 0.0 },
+          "left_arm": { "sx": 0.1, "sy": 0.0, "sz": 0.2, "elbow": 0.3, "wx": 0.0, "wy": 0.0, "wz": 0.0 },
+          "right_hand": { "thumb": 0.0, "index": 1.0, "middle": 1.0, "ring": 1.0, "pinky": 1.0, "spread": 0.0, "shape": "thumbs-up" },
+          "left_hand": { "thumb": 0.2, "index": 0.2, "middle": 0.2, "ring": 0.2, "pinky": 0.2, "spread": 0.1, "shape": "relaxed" },
+          "head": { "pitch": 0.02, "yaw": 0.0, "roll": 0.0, "eyebrows": "neutral", "mouth": "smile" }
+        },
+        {
+          "step": 3,
+          "name": "Second Chest Tap (Firm Confirmation)",
+          "duration": 700,
+          "right_arm": { "sx": -0.68, "sy": 0.3, "sz": 0.2, "elbow": 1.78, "wx": 0.1, "wy": 0.0, "wz": 0.0 },
+          "left_arm": { "sx": 0.1, "sy": 0.0, "sz": 0.2, "elbow": 0.3, "wx": 0.0, "wy": 0.0, "wz": 0.0 },
+          "right_hand": { "thumb": 0.0, "index": 1.0, "middle": 1.0, "ring": 1.0, "pinky": 1.0, "spread": 0.0, "shape": "thumbs-up" },
+          "left_hand": { "thumb": 0.2, "index": 0.2, "middle": 0.2, "ring": 0.2, "pinky": 0.2, "spread": 0.1, "shape": "relaxed" },
+          "head": { "pitch": 0.16, "yaw": 0.0, "roll": 0.0, "eyebrows": "neutral", "mouth": "confident-smile" }
+        },
+        {
+          "step": 4,
+          "name": "Return to Neutral",
+          "duration": 500,
+          "right_arm": { "sx": 0.1, "sy": 0.0, "sz": -0.2, "elbow": 0.35, "wx": 0.0, "wy": 0.0, "wz": 0.0 },
+          "left_arm": { "sx": 0.1, "sy": 0.0, "sz": 0.2, "elbow": 0.35, "wx": 0.0, "wy": 0.0, "wz": 0.0 },
+          "right_hand": { "thumb": 0.2, "index": 0.2, "middle": 0.2, "ring": 0.2, "pinky": 0.2, "spread": 0.1, "shape": "relaxed" },
+          "left_hand": { "thumb": 0.2, "index": 0.2, "middle": 0.2, "ring": 0.2, "pinky": 0.2, "spread": 0.1, "shape": "relaxed" },
+          "head": { "pitch": 0.0, "yaw": 0.0, "roll": 0.0, "eyebrows": "neutral", "mouth": "smile" }
+        }
+      ]
+    },
+    {
+      "id": 5,
+      "key": "what_is_your_name",
+      "phrase": "What Is Your Name?",
+      "category": "Introduction",
+      "translations": {
+        "en": "What is your name?",
+        "hi": "आपका नाम क्या है?",
+        "kn": "ನಿಮ್ಮ ಹೆಸರೇನು?"
+      },
+      "keywords": [
+        "what is your name", "whats your name", "what is ur name", "your name",
+        "aapka naam kya hai", "nimma hesaru enu", "hesarenu",
+        "ನಿಮ್ಮ ಹೆಸರೇನು", "ನಿಮ್ಮ ಹೆಸರು ಏನು", "आपका नाम क्या है"
+      ],
+      "sign_overview": "Identity inquiry: Point forward (YOU) -> Sweep H-hand across chest (NAME) -> Open palms shrug with questioning lowered brows (WHAT).",
+      "components": {
+        "handshape": "Index Point -> Two fingers extended (H-hand) -> Open palms",
+        "location": "Front Line of Sight to Chest to Shrug Space",
+        "movement": "Directional forward point -> Horizontal chest sweep -> Palmar open shrug",
+        "expression": "Questioning lowered brows with an inquisitive head tilt"
+      },
+      "keyframes": [
+        {
+          "step": 1,
+          "name": "Point at Listener (YOU)",
+          "duration": 700,
+          "right_arm": { "sx": -0.65, "sy": 0.05, "sz": 0.15, "elbow": 0.65, "wx": 0.0, "wy": 0.0, "wz": 0.0 },
+          "left_arm": { "sx": 0.1, "sy": 0.0, "sz": 0.2, "elbow": 0.3, "wx": 0.0, "wy": 0.0, "wz": 0.0 },
+          "right_hand": { "thumb": 0.8, "index": 0.0, "middle": 1.0, "ring": 1.0, "pinky": 1.0, "spread": 0.0, "shape": "point" },
+          "left_hand": { "thumb": 0.2, "index": 0.2, "middle": 0.2, "ring": 0.2, "pinky": 0.2, "spread": 0.1, "shape": "relaxed" },
+          "head": { "pitch": 0.0, "yaw": 0.0, "roll": 0.0, "eyebrows": "neutral", "mouth": "neutral" }
+        },
+        {
+          "step": 2,
+          "name": "Sweep Across Chest (NAME)",
+          "duration": 800,
+          "right_arm": { "sx": -0.6, "sy": 0.38, "sz": 0.3, "elbow": 1.55, "wx": 0.1, "wy": 0.2, "wz": 0.0 },
+          "left_arm": { "sx": 0.1, "sy": 0.0, "sz": 0.2, "elbow": 0.3, "wx": 0.0, "wy": 0.0, "wz": 0.0 },
+          "right_hand": { "thumb": 0.8, "index": 0.0, "middle": 0.0, "ring": 1.0, "pinky": 1.0, "spread": 0.0, "shape": "H-name" },
+          "left_hand": { "thumb": 0.2, "index": 0.2, "middle": 0.2, "ring": 0.2, "pinky": 0.2, "spread": 0.1, "shape": "relaxed" },
+          "head": { "pitch": 0.05, "yaw": 0.04, "roll": 0.0, "eyebrows": "furrowed", "mouth": "neutral" }
+        },
+        {
+          "step": 3,
+          "name": "Bilateral Palms Up Shrug (WHAT?)",
+          "duration": 900,
+          "right_arm": { "sx": -0.4, "sy": 0.3, "sz": 0.4, "elbow": 1.1, "wx": 0.2, "wy": 0.0, "wz": 0.0 },
+          "left_arm": { "sx": -0.4, "sy": -0.3, "sz": -0.4, "elbow": 1.1, "wx": 0.2, "wy": 0.0, "wz": 0.0 },
+          "right_hand": { "thumb": 0.0, "index": 0.0, "middle": 0.0, "ring": 0.0, "pinky": 0.0, "spread": 0.3, "shape": "open-palms" },
+          "left_hand": { "thumb": 0.0, "index": 0.0, "middle": 0.0, "ring": 0.0, "pinky": 0.0, "spread": 0.3, "shape": "open-palms" },
+          "head": { "pitch": 0.05, "yaw": 0.12, "roll": 0.08, "eyebrows": "furrowed", "mouth": "question" }
+        },
+        {
+          "step": 4,
+          "name": "Return to Neutral",
+          "duration": 500,
+          "right_arm": { "sx": 0.1, "sy": 0.0, "sz": -0.2, "elbow": 0.35, "wx": 0.0, "wy": 0.0, "wz": 0.0 },
+          "left_arm": { "sx": 0.1, "sy": 0.0, "sz": 0.2, "elbow": 0.35, "wx": 0.0, "wy": 0.0, "wz": 0.0 },
+          "right_hand": { "thumb": 0.2, "index": 0.2, "middle": 0.2, "ring": 0.2, "pinky": 0.2, "spread": 0.1, "shape": "relaxed" },
+          "left_hand": { "thumb": 0.2, "index": 0.2, "middle": 0.2, "ring": 0.2, "pinky": 0.2, "spread": 0.1, "shape": "relaxed" },
+          "head": { "pitch": 0.0, "yaw": 0.0, "roll": 0.0, "eyebrows": "neutral", "mouth": "neutral" }
+        }
+      ]
+    },
+    {
+      "id": 6,
+      "key": "my_name_is",
+      "phrase": "My Name Is...",
+      "category": "Introduction",
+      "translations": {
+        "en": "My name is...",
+        "hi": "मेरा नाम ... है",
+        "kn": "ನನ್ನ ಹೆಸರು..."
+      },
+      "keywords": [
+        "my name is", "my name", "myself", "mera naam", "mera naam hai",
+        "nanna hesaru", "ನನ್ನ ಹೆಸರು", "मेरा नाम"
+      ],
+      "sign_overview": "Self introduction: Open dominant hand touches chest (MY) -> Two fingers sweep across chest (NAME) -> Welcoming presentation pose.",
+      "components": {
+        "handshape": "Flat Open Hand -> H-handshape (Index & Middle together)",
+        "location": "Center of Chest / Sternum",
+        "movement": "Chest tap -> Horizontal sweep -> Front presentation",
+        "expression": "Polite, confident smile with direct eye contact"
+      },
+      "keyframes": [
+        {
+          "step": 1,
+          "name": "Tap Flat Hand on Chest (MY / ME)",
+          "duration": 700,
+          "right_arm": { "sx": -0.65, "sy": 0.22, "sz": 0.22, "elbow": 1.85, "wx": 0.1, "wy": 0.0, "wz": 0.0 },
+          "left_arm": { "sx": 0.1, "sy": 0.0, "sz": 0.2, "elbow": 0.3, "wx": 0.0, "wy": 0.0, "wz": 0.0 },
+          "right_hand": { "thumb": 0.0, "index": 0.0, "middle": 0.0, "ring": 0.0, "pinky": 0.0, "spread": 0.0, "shape": "B-flat" },
+          "left_hand": { "thumb": 0.2, "index": 0.2, "middle": 0.2, "ring": 0.2, "pinky": 0.2, "spread": 0.1, "shape": "relaxed" },
+          "head": { "pitch": 0.08, "yaw": 0.0, "roll": 0.0, "eyebrows": "neutral", "mouth": "smile" }
+        },
+        {
+          "step": 2,
+          "name": "Two-Finger Sweep Across (NAME)",
+          "duration": 800,
+          "right_arm": { "sx": -0.6, "sy": 0.35, "sz": 0.28, "elbow": 1.55, "wx": 0.1, "wy": 0.2, "wz": 0.0 },
+          "left_arm": { "sx": 0.1, "sy": 0.0, "sz": 0.2, "elbow": 0.3, "wx": 0.0, "wy": 0.0, "wz": 0.0 },
+          "right_hand": { "thumb": 0.8, "index": 0.0, "middle": 0.0, "ring": 1.0, "pinky": 1.0, "spread": 0.0, "shape": "H-name" },
+          "left_hand": { "thumb": 0.2, "index": 0.2, "middle": 0.2, "ring": 0.2, "pinky": 0.2, "spread": 0.1, "shape": "relaxed" },
+          "head": { "pitch": 0.0, "yaw": 0.0, "roll": 0.0, "eyebrows": "neutral", "mouth": "confident-smile" }
+        },
+        {
+          "step": 3,
+          "name": "Presentation Pose Ready for Name Spelling",
+          "duration": 600,
+          "right_arm": { "sx": -0.5, "sy": 0.15, "sz": 0.3, "elbow": 1.25, "wx": 0.0, "wy": 0.0, "wz": 0.0 },
+          "left_arm": { "sx": 0.1, "sy": 0.0, "sz": 0.2, "elbow": 0.3, "wx": 0.0, "wy": 0.0, "wz": 0.0 },
+          "right_hand": { "thumb": 0.0, "index": 0.0, "middle": 0.0, "ring": 0.0, "pinky": 0.0, "spread": 0.1, "shape": "B-flat" },
+          "left_hand": { "thumb": 0.2, "index": 0.2, "middle": 0.2, "ring": 0.2, "pinky": 0.2, "spread": 0.1, "shape": "relaxed" },
+          "head": { "pitch": 0.0, "yaw": 0.0, "roll": 0.0, "eyebrows": "neutral", "mouth": "smile" }
+        },
+        {
+          "step": 4,
+          "name": "Return to Neutral",
+          "duration": 500,
+          "right_arm": { "sx": 0.1, "sy": 0.0, "sz": -0.2, "elbow": 0.35, "wx": 0.0, "wy": 0.0, "wz": 0.0 },
+          "left_arm": { "sx": 0.1, "sy": 0.0, "sz": 0.2, "elbow": 0.35, "wx": 0.0, "wy": 0.0, "wz": 0.0 },
+          "right_hand": { "thumb": 0.2, "index": 0.2, "middle": 0.2, "ring": 0.2, "pinky": 0.2, "spread": 0.1, "shape": "relaxed" },
+          "left_hand": { "thumb": 0.2, "index": 0.2, "middle": 0.2, "ring": 0.2, "pinky": 0.2, "spread": 0.1, "shape": "relaxed" },
+          "head": { "pitch": 0.0, "yaw": 0.0, "roll": 0.0, "eyebrows": "neutral", "mouth": "neutral" }
+        }
+      ]
+    },
+    {
+      "id": 7,
+      "key": "nice_to_meet_you",
+      "phrase": "Nice To Meet You",
+      "category": "Courtesy",
+      "translations": {
+        "en": "Nice to meet you",
+        "hi": "आपसे मिलकर खुशी हुई",
+        "kn": "ನಿಮ್ಮನ್ನು ಭೇಟಿಯಾಗಿದ್ದು ಸಂತೋಷ"
+      },
+      "keywords": [
+        "nice to meet you", "glad to meet you", "pleasure to meet you", "happy to meet you",
+        "aapse milkar accha laga", "aapse milkar khushi hui", "bhetiyagiddu santosho",
+        "ಭೇಟಿಯಾಗಿದ್ದು ಸಂತೋಷ", "ನಿಮ್ಮನ್ನು ಭೇಟಿಯಾಗಿದ್ದು ಸಂತೋಷ", "आपसे मिलकर खुशी हुई"
+      ],
+      "sign_overview": "Social connection sign: Right hand glides across left palm (NICE/GOOD), both index fingers come together in midline (MEET), then point forward (YOU).",
+      "components": {
+        "handshape": "Flat open palms transitioning to bilateral index fingers",
+        "location": "Mid-Chest Front Space",
+        "movement": "Linear palm glide -> Index fingers converge -> Forward point",
+        "expression": "Warm, genuine smiling face with welcoming head nod"
+      },
+      "keyframes": [
+        {
+          "step": 1,
+          "name": "Glide Across Palm (NICE / GOOD)",
+          "duration": 700,
+          "right_arm": { "sx": -0.6, "sy": 0.2, "sz": 0.25, "elbow": 1.45, "wx": 0.0, "wy": 0.2, "wz": 0.0 },
+          "left_arm": { "sx": -0.5, "sy": -0.15, "sz": -0.2, "elbow": 1.35, "wx": 0.0, "wy": 0.5, "wz": 0.0 },
+          "right_hand": { "thumb": 0.0, "index": 0.0, "middle": 0.0, "ring": 0.0, "pinky": 0.0, "spread": 0.0, "shape": "B-flat" },
+          "left_hand": { "thumb": 0.0, "index": 0.0, "middle": 0.0, "ring": 0.0, "pinky": 0.0, "spread": 0.0, "shape": "flat-base" },
+          "head": { "pitch": 0.08, "yaw": 0.0, "roll": 0.0, "eyebrows": "neutral", "mouth": "smile" }
+        },
+        {
+          "step": 2,
+          "name": "Both Index Fingers Meet at Midline (MEET)",
+          "duration": 800,
+          "right_arm": { "sx": -0.55, "sy": 0.3, "sz": 0.4, "elbow": 1.5, "wx": 0.0, "wy": 0.3, "wz": 0.0 },
+          "left_arm": { "sx": -0.55, "sy": -0.3, "sz": -0.4, "elbow": 1.5, "wx": 0.0, "wy": -0.3, "wz": 0.0 },
+          "right_hand": { "thumb": 0.8, "index": 0.0, "middle": 1.0, "ring": 1.0, "pinky": 1.0, "spread": 0.0, "shape": "point" },
+          "left_hand": { "thumb": 0.8, "index": 0.0, "middle": 1.0, "ring": 1.0, "pinky": 1.0, "spread": 0.0, "shape": "point" },
+          "head": { "pitch": 0.04, "yaw": 0.0, "roll": 0.0, "eyebrows": "neutral", "mouth": "warm-smile" }
+        },
+        {
+          "step": 3,
+          "name": "Point Forward (YOU)",
+          "duration": 700,
+          "right_arm": { "sx": -0.65, "sy": 0.05, "sz": 0.15, "elbow": 0.65, "wx": 0.0, "wy": 0.0, "wz": 0.0 },
+          "left_arm": { "sx": 0.1, "sy": 0.0, "sz": 0.2, "elbow": 0.35, "wx": 0.0, "wy": 0.0, "wz": 0.0 },
+          "right_hand": { "thumb": 0.8, "index": 0.0, "middle": 1.0, "ring": 1.0, "pinky": 1.0, "spread": 0.0, "shape": "point" },
+          "left_hand": { "thumb": 0.2, "index": 0.2, "middle": 0.2, "ring": 0.2, "pinky": 0.2, "spread": 0.1, "shape": "relaxed" },
+          "head": { "pitch": 0.1, "yaw": 0.0, "roll": 0.0, "eyebrows": "neutral", "mouth": "smile" }
+        },
+        {
+          "step": 4,
+          "name": "Return to Neutral",
+          "duration": 500,
+          "right_arm": { "sx": 0.1, "sy": 0.0, "sz": -0.2, "elbow": 0.35, "wx": 0.0, "wy": 0.0, "wz": 0.0 },
+          "left_arm": { "sx": 0.1, "sy": 0.0, "sz": 0.2, "elbow": 0.35, "wx": 0.0, "wy": 0.0, "wz": 0.0 },
+          "right_hand": { "thumb": 0.2, "index": 0.2, "middle": 0.2, "ring": 0.2, "pinky": 0.2, "spread": 0.1, "shape": "relaxed" },
+          "left_hand": { "thumb": 0.2, "index": 0.2, "middle": 0.2, "ring": 0.2, "pinky": 0.2, "spread": 0.1, "shape": "relaxed" },
+          "head": { "pitch": 0.0, "yaw": 0.0, "roll": 0.0, "eyebrows": "neutral", "mouth": "neutral" }
+        }
+      ]
+    },
+    {
+      "id": 8,
+      "key": "please_help_me",
+      "phrase": "Please Help Me",
+      "category": "Emergency / Need",
+      "translations": {
+        "en": "Please help me",
+        "hi": "कृपया मेरी मदद करें",
+        "kn": "ದಯವಿಟ್ಟು ನನಗೆ ಸಹಾಯ ಮಾಡಿ"
+      },
+      "keywords": [
+        "please help me", "help me", "help", "please help", "assist me",
+        "madat karo", "kripya madad karein", "sahaya madi", "dayavittu sahaya madi",
+        "ದಯವಿಟ್ಟು ಸಹಾಯ ಮಾಡಿ", "ಸಹಾಯ ಮಾಡಿ", "मदद करो", "कृपया मेरी मदद करें"
+      ],
+      "sign_overview": "Assistance request: Non-dominant palm flat facing up, dominant thumbs-up fist rests on it, both lift upward and inward toward chest (HELP ME).",
+      "components": {
+        "handshape": "Flat base palm (Left) + Thumbs-up fist (Right)",
+        "location": "Lower Abdomen lifting to Upper Sternum",
+        "movement": "Upward and inward supportive lifting motion",
+        "expression": "Earnest pleading expression with attentive eyes"
+      },
+      "keyframes": [
+        {
+          "step": 1,
+          "name": "Rest Fist on Open Base Palm",
+          "duration": 600,
+          "right_arm": { "sx": -0.5, "sy": 0.15, "sz": 0.25, "elbow": 1.45, "wx": 0.0, "wy": 0.0, "wz": 0.0 },
+          "left_arm": { "sx": -0.45, "sy": -0.15, "sz": -0.25, "elbow": 1.35, "wx": 0.0, "wy": 0.4, "wz": 0.0 },
+          "right_hand": { "thumb": 0.0, "index": 1.0, "middle": 1.0, "ring": 1.0, "pinky": 1.0, "spread": 0.0, "shape": "thumbs-up" },
+          "left_hand": { "thumb": 0.0, "index": 0.0, "middle": 0.0, "ring": 0.0, "pinky": 0.0, "spread": 0.0, "shape": "flat-base" },
+          "head": { "pitch": 0.05, "yaw": 0.0, "roll": 0.0, "eyebrows": "furrowed", "mouth": "neutral" }
+        },
+        {
+          "step": 2,
+          "name": "Lift Upward and Inward (HELP)",
+          "duration": 900,
+          "right_arm": { "sx": -0.68, "sy": 0.18, "sz": 0.28, "elbow": 1.75, "wx": 0.1, "wy": 0.0, "wz": 0.0 },
+          "left_arm": { "sx": -0.62, "sy": -0.18, "sz": -0.28, "elbow": 1.65, "wx": 0.1, "wy": 0.4, "wz": 0.0 },
+          "right_hand": { "thumb": 0.0, "index": 1.0, "middle": 1.0, "ring": 1.0, "pinky": 1.0, "spread": 0.0, "shape": "thumbs-up" },
+          "left_hand": { "thumb": 0.0, "index": 0.0, "middle": 0.0, "ring": 0.0, "pinky": 0.0, "spread": 0.0, "shape": "flat-base" },
+          "head": { "pitch": 0.12, "yaw": 0.0, "roll": 0.0, "eyebrows": "raised", "mouth": "pleading" }
+        },
+        {
+          "step": 3,
+          "name": "Dominant Index Points to Self (ME)",
+          "duration": 700,
+          "right_arm": { "sx": -0.6, "sy": 0.2, "sz": 0.2, "elbow": 1.85, "wx": 0.0, "wy": 0.0, "wz": 0.0 },
+          "left_arm": { "sx": 0.1, "sy": 0.0, "sz": 0.2, "elbow": 0.35, "wx": 0.0, "wy": 0.0, "wz": 0.0 },
+          "right_hand": { "thumb": 0.8, "index": 0.0, "middle": 1.0, "ring": 1.0, "pinky": 1.0, "spread": 0.0, "shape": "point" },
+          "left_hand": { "thumb": 0.2, "index": 0.2, "middle": 0.2, "ring": 0.2, "pinky": 0.2, "spread": 0.1, "shape": "relaxed" },
+          "head": { "pitch": 0.15, "yaw": 0.0, "roll": 0.0, "eyebrows": "neutral", "mouth": "smile" }
+        },
+        {
+          "step": 4,
+          "name": "Return to Neutral",
+          "duration": 500,
+          "right_arm": { "sx": 0.1, "sy": 0.0, "sz": -0.2, "elbow": 0.35, "wx": 0.0, "wy": 0.0, "wz": 0.0 },
+          "left_arm": { "sx": 0.1, "sy": 0.0, "sz": 0.2, "elbow": 0.35, "wx": 0.0, "wy": 0.0, "wz": 0.0 },
+          "right_hand": { "thumb": 0.2, "index": 0.2, "middle": 0.2, "ring": 0.2, "pinky": 0.2, "spread": 0.1, "shape": "relaxed" },
+          "left_hand": { "thumb": 0.2, "index": 0.2, "middle": 0.2, "ring": 0.2, "pinky": 0.2, "spread": 0.1, "shape": "relaxed" },
+          "head": { "pitch": 0.0, "yaw": 0.0, "roll": 0.0, "eyebrows": "neutral", "mouth": "neutral" }
+        }
+      ]
+    },
+    {
+      "id": 9,
+      "key": "where_is_washroom",
+      "phrase": "Washroom / Toilet",
+      "category": "Everyday Essential",
+      "translations": {
+        "en": "Where is the washroom / toilet?",
+        "hi": "शौचालय कहाँ है?",
+        "kn": "ಶೌಚಾಲಯ ಎಲ್ಲಿದೆ?"
+      },
+      "keywords": [
+        "where is washroom", "where is the washroom", "washroom", "toilet", "restroom",
+        "bathroom", "where is toilet", "where is bathroom", "shauchalay", "toilet ellide",
+        "washroom ellide", "ಶೌಚಾಲಯ ಎಲ್ಲಿದೆ", "ಶೌಚಾಲಯ", "शौचालय कहाँ है", "बाथरूम कहाँ है"
+      ],
+      "sign_overview": "Public navigation sign: Dominant hand forms 'W' or 'T' shape and shakes side to side gently, followed by an open questioning palm shrug.",
+      "components": {
+        "handshape": "W-Handshape (Index, Middle, Ring up) or T-Handshape",
+        "location": "Chest Height Forward Space",
+        "movement": "Side-to-side wrist oscillation -> Palmar questioning shrug",
+        "expression": "Questioning raised eyebrows with head tilt"
+      },
+      "keyframes": [
+        {
+          "step": 1,
+          "name": "Form W-Handshape at Chest",
+          "duration": 500,
+          "right_arm": { "sx": -0.6, "sy": 0.2, "sz": 0.3, "elbow": 1.6, "wx": 0.0, "wy": 0.0, "wz": 0.0 },
+          "left_arm": { "sx": 0.1, "sy": 0.0, "sz": 0.2, "elbow": 0.3, "wx": 0.0, "wy": 0.0, "wz": 0.0 },
+          "right_hand": { "thumb": 0.8, "index": 0.0, "middle": 0.0, "ring": 0.0, "pinky": 1.0, "spread": 0.3, "shape": "W-washroom" },
+          "left_hand": { "thumb": 0.2, "index": 0.2, "middle": 0.2, "ring": 0.2, "pinky": 0.2, "spread": 0.1, "shape": "relaxed" },
+          "head": { "pitch": 0.0, "yaw": 0.0, "roll": 0.0, "eyebrows": "raised", "mouth": "neutral" }
+        },
+        {
+          "step": 2,
+          "name": "Shake Side to Side (Oscillation)",
+          "duration": 900,
+          "right_arm": { "sx": -0.6, "sy": 0.2, "sz": 0.3, "elbow": 1.6, "wx": 0.0, "wy": 0.25, "wz": 0.2 },
+          "left_arm": { "sx": 0.1, "sy": 0.0, "sz": 0.2, "elbow": 0.3, "wx": 0.0, "wy": 0.0, "wz": 0.0 },
+          "right_hand": { "thumb": 0.8, "index": 0.0, "middle": 0.0, "ring": 0.0, "pinky": 1.0, "spread": 0.3, "shape": "W-washroom" },
+          "left_hand": { "thumb": 0.2, "index": 0.2, "middle": 0.2, "ring": 0.2, "pinky": 0.2, "spread": 0.1, "shape": "relaxed" },
+          "head": { "pitch": 0.0, "yaw": 0.08, "roll": 0.06, "eyebrows": "raised", "mouth": "question" }
+        },
+        {
+          "step": 3,
+          "name": "Open Palm Shrug (WHERE?)",
+          "duration": 800,
+          "right_arm": { "sx": -0.4, "sy": 0.28, "sz": 0.35, "elbow": 1.15, "wx": 0.2, "wy": 0.0, "wz": 0.0 },
+          "left_arm": { "sx": -0.4, "sy": -0.28, "sz": -0.35, "elbow": 1.15, "wx": 0.2, "wy": 0.0, "wz": 0.0 },
+          "right_hand": { "thumb": 0.0, "index": 0.0, "middle": 0.0, "ring": 0.0, "pinky": 0.0, "spread": 0.25, "shape": "open-palms" },
+          "left_hand": { "thumb": 0.0, "index": 0.0, "middle": 0.0, "ring": 0.0, "pinky": 0.0, "spread": 0.25, "shape": "open-palms" },
+          "head": { "pitch": 0.05, "yaw": 0.1, "roll": 0.08, "eyebrows": "raised", "mouth": "question" }
+        },
+        {
+          "step": 4,
+          "name": "Return to Neutral",
+          "duration": 500,
+          "right_arm": { "sx": 0.1, "sy": 0.0, "sz": -0.2, "elbow": 0.35, "wx": 0.0, "wy": 0.0, "wz": 0.0 },
+          "left_arm": { "sx": 0.1, "sy": 0.0, "sz": 0.2, "elbow": 0.35, "wx": 0.0, "wy": 0.0, "wz": 0.0 },
+          "right_hand": { "thumb": 0.2, "index": 0.2, "middle": 0.2, "ring": 0.2, "pinky": 0.2, "spread": 0.1, "shape": "relaxed" },
+          "left_hand": { "thumb": 0.2, "index": 0.2, "middle": 0.2, "ring": 0.2, "pinky": 0.2, "spread": 0.1, "shape": "relaxed" },
+          "head": { "pitch": 0.0, "yaw": 0.0, "roll": 0.0, "eyebrows": "neutral", "mouth": "neutral" }
+        }
+      ]
+    },
+    {
+      "id": 10,
+      "key": "good_morning_bye",
+      "phrase": "Good Morning / Bye",
+      "category": "Daily Greeting",
+      "translations": {
+        "en": "Good Morning / Goodbye",
+        "hi": "शुभ प्रभात / अलविदा",
+        "kn": "ಶುಭೋದಯ / ಹೋಗಿ ಬರುತ್ತೇನೆ"
+      },
+      "keywords": [
+        "good morning", "good bye", "goodbye", "bye", "bye bye", "morning", "see you",
+        "subhodaya", "shubh prabhat", "alvida", "tata",
+        "ಶುಭೋದಯ", "ಬೈ ಬೈ", "ಬೈ", "ಹೋಗಿ ಬರುತ್ತೇನೆ", "शुभ प्रभात", "अलविदा"
+      ],
+      "sign_overview": "Morning departure sign: Hand touches chin and extends forward (GOOD), rises upward like the sun (MORNING), followed by open palm waving smoothly side to side (BYE).",
+      "components": {
+        "handshape": "Flat Hand (Good) -> Sun Arc -> Open 5-Hand waving",
+        "location": "Chin to Mid-Chest to Shoulder/Head Height",
+        "movement": "Forward extension -> Upward arc -> Horizontal smooth wave",
+        "expression": "Warm cheerful smile with friendly eye contact"
+      },
+      "keyframes": [
+        {
+          "step": 1,
+          "name": "Touch Chin & Sweep Forward (GOOD)",
+          "duration": 700,
+          "right_arm": { "sx": -0.7, "sy": 0.15, "sz": 0.25, "elbow": 1.6, "wx": 0.1, "wy": 0.0, "wz": 0.0 },
+          "left_arm": { "sx": 0.1, "sy": 0.0, "sz": 0.2, "elbow": 0.3, "wx": 0.0, "wy": 0.0, "wz": 0.0 },
+          "right_hand": { "thumb": 0.0, "index": 0.0, "middle": 0.0, "ring": 0.0, "pinky": 0.0, "spread": 0.0, "shape": "B-flat" },
+          "left_hand": { "thumb": 0.2, "index": 0.2, "middle": 0.2, "ring": 0.2, "pinky": 0.2, "spread": 0.1, "shape": "relaxed" },
+          "head": { "pitch": 0.08, "yaw": 0.0, "roll": 0.0, "eyebrows": "neutral", "mouth": "smile" }
+        },
+        {
+          "step": 2,
+          "name": "Rise Upward Beside Head (MORNING / SUN)",
+          "duration": 800,
+          "right_arm": { "sx": -1.05, "sy": 0.15, "sz": 0.45, "elbow": 1.25, "wx": 0.0, "wy": 0.0, "wz": 0.0 },
+          "left_arm": { "sx": 0.1, "sy": 0.0, "sz": 0.2, "elbow": 0.3, "wx": 0.0, "wy": 0.0, "wz": 0.0 },
+          "right_hand": { "thumb": 0.0, "index": 0.0, "middle": 0.0, "ring": 0.0, "pinky": 0.0, "spread": 0.2, "shape": "open-palms" },
+          "left_hand": { "thumb": 0.2, "index": 0.2, "middle": 0.2, "ring": 0.2, "pinky": 0.2, "spread": 0.1, "shape": "relaxed" },
+          "head": { "pitch": -0.05, "yaw": 0.0, "roll": 0.0, "eyebrows": "neutral", "mouth": "bright-smile" }
+        },
+        {
+          "step": 3,
+          "name": "Wave Side-to-Side Smoothly (BYE)",
+          "duration": 1100,
+          "right_arm": { "sx": -1.15, "sy": 0.1, "sz": 0.5, "elbow": 1.15, "wx": 0.0, "wy": 0.0, "wz": 0.35 },
+          "left_arm": { "sx": 0.1, "sy": 0.0, "sz": 0.2, "elbow": 0.3, "wx": 0.0, "wy": 0.0, "wz": 0.0 },
+          "right_hand": { "thumb": 0.0, "index": 0.0, "middle": 0.0, "ring": 0.0, "pinky": 0.0, "spread": 0.3, "shape": "open-wave" },
+          "left_hand": { "thumb": 0.2, "index": 0.2, "middle": 0.2, "ring": 0.2, "pinky": 0.2, "spread": 0.1, "shape": "relaxed" },
+          "head": { "pitch": 0.04, "yaw": 0.05, "roll": 0.04, "eyebrows": "neutral", "mouth": "warm-smile" }
+        },
+        {
+          "step": 4,
+          "name": "Return to Neutral",
+          "duration": 500,
+          "right_arm": { "sx": 0.1, "sy": 0.0, "sz": -0.2, "elbow": 0.35, "wx": 0.0, "wy": 0.0, "wz": 0.0 },
+          "left_arm": { "sx": 0.1, "sy": 0.0, "sz": 0.2, "elbow": 0.35, "wx": 0.0, "wy": 0.0, "wz": 0.0 },
+          "right_hand": { "thumb": 0.2, "index": 0.2, "middle": 0.2, "ring": 0.2, "pinky": 0.2, "spread": 0.1, "shape": "relaxed" },
+          "left_hand": { "thumb": 0.2, "index": 0.2, "middle": 0.2, "ring": 0.2, "pinky": 0.2, "spread": 0.1, "shape": "relaxed" },
+          "head": { "pitch": 0.0, "yaw": 0.0, "roll": 0.0, "eyebrows": "neutral", "mouth": "smile" }
+        }
+      ]
+    }
+  ]
+}

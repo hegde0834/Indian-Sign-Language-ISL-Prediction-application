@@ -1,0 +1,521 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ISL Sign Language Prediction Quiz – 26 Letters Mastery</title>
+  <meta name="description" content="Test and master all 26 letters of Indian Sign Language with real-time AI computer vision prediction, interactive camera challenges, and visual recognition quizzes.">
+
+  <!-- Modern Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&family=Sora:wght@600;700;800&family=Space+Grotesk:wght@600;700&display=swap" rel="stylesheet">
+
+  <!-- Stylesheets -->
+  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="quiz.css?v=20261104_5">
+</head>
+<body class="quiz-body">
+  <!-- Ambient 3D Lighting -->
+  <div class="ambient-glow orb-purple" aria-hidden="true"></div>
+  <div class="ambient-glow orb-cyan" aria-hidden="true"></div>
+  <div class="ambient-glow orb-blue" aria-hidden="true"></div>
+
+  <!-- Top App Navigation Bar -->
+  <header class="app-window-bar">
+    <div class="window-left">
+      <div class="window-dots" aria-hidden="true">
+        <span class="dot dot-red"></span>
+        <span class="dot dot-yellow"></span>
+        <span class="dot dot-green"></span>
+      </div>
+      <div class="quiz-nav-brand">
+        <a href="/" class="brand-link" title="Return to Home">
+          <svg viewBox="0 0 32 32" width="22" height="22" fill="none">
+            <rect width="32" height="32" rx="7" fill="url(#quiz-nav-grad)"/>
+            <path d="M10 22v-8m4 8V8m4 14V11m4 11v-6" stroke="#ffffff" stroke-width="2.2" stroke-linecap="round"/>
+            <defs>
+              <linearGradient id="quiz-nav-grad" x1="0" y1="0" x2="32" y2="32" gradientUnits="userSpaceOnUse">
+                <stop stop-color="#00f0ff"/>
+                <stop offset="0.5" stop-color="#2563eb"/>
+                <stop offset="1" stop-color="#7c3aed"/>
+              </linearGradient>
+            </defs>
+          </svg>
+          <span class="brand-text">ISL Detect</span>
+        </a>
+        <span class="bar-divider">/</span>
+        <span class="page-title">🎯 26-Letter Prediction Quiz</span>
+      </div>
+    </div>
+
+    <div class="window-right">
+      <div class="conn-badge" id="backend-status">
+        <span class="status-dot"></span>
+        <span id="backend-status-text">AI Engine Online</span>
+      </div>
+      <button class="icon-toggle-btn" id="btn-sound-toggle" title="Toggle Sound FX" aria-label="Toggle Sound FX">
+        <span id="sound-icon">🔊</span>
+      </button>
+      <a href="/lessons" class="btn btn-sm btn-glass" style="border-color: rgba(147, 51, 234, 0.4); color: #c084fc;">
+        <span>🎥 Video Lessons</span>
+      </a>
+      <a href="/predict" class="btn btn-sm btn-glass nav-predict-btn">
+        <span>Live Studio</span>
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14m-7-7 7 7-7 7"/></svg>
+      </a>
+      <a href="/" class="btn btn-sm btn-ghost nav-home-btn">Home</a>
+    </div>
+  </header>
+
+  <main class="quiz-main-container">
+    <!-- =====================================================================
+         1. QUIZ CONFIGURATION / SETUP SCREEN
+         ===================================================================== -->
+    <section class="quiz-screen active" id="screen-setup">
+      <div class="setup-card tilt-card">
+        <div class="setup-badge">
+          <span class="pill-dot"></span>
+          <span>Indian Sign Language AI Challenge</span>
+        </div>
+
+        <h1 class="setup-title">
+          Master All <span class="gradient-text">26 Letters</span> of ISL
+        </h1>
+        <p class="setup-subtitle">
+          Test your Indian Sign Language skills using our real-time 3D hand tracking AI. 
+          Perform the gestures directly to your webcam, or test your visual recognition across all 26 manual alphabets (A to Z).
+        </p>
+
+        <!-- Setup Options Grid -->
+        <div class="setup-grid">
+          <!-- Game Mode Selector -->
+          <div class="setup-section">
+            <h2 class="setup-section-title">1. Select Quiz Mode</h2>
+            <div class="mode-options-grid">
+              <label class="mode-card active" data-mode="camera">
+                <input type="radio" name="quizMode" value="camera" checked>
+                <div class="mode-icon-box">📸</div>
+                <div class="mode-info">
+                  <span class="mode-title">AI Camera Prediction</span>
+                  <span class="mode-desc">Perform gestures live in front of your webcam. MediaPipe & XGBoost evaluate your signs in real time!</span>
+                  <span class="mode-tag recommendation">Recommended • Real-Time AI</span>
+                </div>
+              </label>
+
+              <label class="mode-card" data-mode="visual-photo">
+                <input type="radio" name="quizMode" value="visual-photo">
+                <div class="mode-icon-box">🖼️</div>
+                <div class="mode-info">
+                  <span class="mode-title">Recognize the Sign</span>
+                  <span class="mode-desc">Examine real Indian Sign Language hand photographs and identify which letter (A–Z) is being signed.</span>
+                  <span class="mode-tag">Visual Flashcard Mode</span>
+                </div>
+              </label>
+
+              <label class="mode-card" data-mode="visual-letter">
+                <input type="radio" name="quizMode" value="visual-letter">
+                <div class="mode-icon-box">🔤</div>
+                <div class="mode-info">
+                  <span class="mode-title">Pick the Matching Sign</span>
+                  <span class="mode-desc">Given a target letter, pick the authentic ISL gesture photograph out of 4 multiple-choice options.</span>
+                  <span class="mode-tag">Reverse Recognition</span>
+                </div>
+              </label>
+            </div>
+          </div>
+
+          <!-- Question Set Selector -->
+          <div class="setup-section">
+            <h2 class="setup-section-title">2. Select Letters Curriculum</h2>
+            <div class="curriculum-chips" id="curriculum-chips">
+              <button type="button" class="curriculum-chip active" data-curriculum="all">
+                <span class="chip-main">All 26 Letters (A – Z)</span>
+                <span class="chip-sub">Complete ISL Alphabet (26 Questions)</span>
+              </button>
+              <button type="button" class="curriculum-chip" data-curriculum="vowels">
+                <span class="chip-main">Vowels (A, E, I, O, U)</span>
+                <span class="chip-sub">Foundational 5 ISL Vowels</span>
+              </button>
+              <button type="button" class="curriculum-chip" data-curriculum="sprint10">
+                <span class="chip-main">Quick Sprint (10 Letters)</span>
+                <span class="chip-sub">10 Random Letters Practice</span>
+              </button>
+              <button type="button" class="curriculum-chip" data-curriculum="part1">
+                <span class="chip-main">Part 1: Letters A – M</span>
+                <span class="chip-sub">First Half (13 Questions)</span>
+              </button>
+              <button type="button" class="curriculum-chip" data-curriculum="part2">
+                <span class="chip-main">Part 2: Letters N – Z</span>
+                <span class="chip-sub">Second Half (13 Questions)</span>
+              </button>
+            </div>
+          </div>
+
+          <!-- Additional Toggles -->
+          <div class="setup-section">
+            <h2 class="setup-section-title">3. Experience Settings</h2>
+            <div class="toggles-grid">
+              <label class="toggle-card">
+                <input type="checkbox" id="opt-shuffle" checked>
+                <div class="toggle-content">
+                  <span class="toggle-name">Shuffle Order</span>
+                  <span class="toggle-sub">Randomize letter presentation for a true test</span>
+                </div>
+              </label>
+
+              <label class="toggle-card">
+                <input type="checkbox" id="opt-hints" checked>
+                <div class="toggle-content">
+                  <span class="toggle-name">Allow Hints</span>
+                  <span class="toggle-sub">Enable reference photos and posture tips when stuck</span>
+                </div>
+              </label>
+
+              <label class="toggle-card">
+                <input type="checkbox" id="opt-sound" checked>
+                <div class="toggle-content">
+                  <span class="toggle-name">Audio & Speech</span>
+                  <span class="toggle-sub">Play success chimes and pronunciation</span>
+                </div>
+              </label>
+            </div>
+          </div>
+        </div>
+
+        <!-- Launch Button -->
+        <div class="setup-actions">
+          <button type="button" class="btn btn-primary btn-xl glow-btn" id="btn-start-quiz">
+            <span class="btn-sparkle">⚡</span>
+            <span>Start Prediction Quiz</span>
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14m-7-7 7 7-7 7"/></svg>
+          </button>
+        </div>
+      </div>
+    </section>
+
+    <!-- =====================================================================
+         2. LIVE QUIZ ARENA (Active Gameplay)
+         ===================================================================== -->
+    <section class="quiz-screen" id="screen-gameplay">
+      <!-- Gameplay Top HUD Strip -->
+      <div class="gameplay-hud">
+        <div class="hud-left">
+          <button class="hud-btn-quit" id="btn-abort-quiz" title="Exit to setup">✕ Quit</button>
+          <div class="hud-counter">
+            <span class="hud-counter-label">Question</span>
+            <span class="hud-counter-value" id="hud-q-index">1/26</span>
+          </div>
+          <div class="hud-mode-pill" id="hud-mode-pill">
+            <span class="mode-dot"></span>
+            <span id="hud-mode-text">AI Camera Mode</span>
+          </div>
+        </div>
+
+        <div class="hud-center">
+          <div class="hud-score-box">
+            <span class="score-icon">⭐</span>
+            <span class="score-value" id="hud-score">0</span>
+            <span class="score-label">PTS</span>
+            <span class="floating-score-tag" id="floatingScoreTag" hidden style="display: none;">+100</span>
+          </div>
+          <div class="hud-streak-box" id="hud-streak-container">
+            <span class="streak-flame">🔥</span>
+            <span class="streak-value" id="hud-streak">0</span>
+            <span class="streak-label">Streak</span>
+            <span class="streak-mult" id="hud-streak-mult">1x</span>
+          </div>
+        </div>
+
+        <div class="hud-right">
+          <div class="hud-timer">
+            <span class="timer-icon">⏱️</span>
+            <span class="timer-value" id="hud-timer">00:00</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- 26-Letter Visual Progress Strip -->
+      <div class="letter-progress-strip" id="letterProgressStrip" aria-label="Quiz Progress by Letter">
+        <!-- Dynamic letter pills generated by quiz.js -->
+      </div>
+
+      <!-- GAMEPLAY ARENA: Dynamic Container for Camera Mode or Visual Mode -->
+      <div class="gameplay-arena" id="gameplayArena">
+        <!-- -------------------------------------------------------------
+             A. AI CAMERA PREDICTION ARENA
+             ------------------------------------------------------------- -->
+        <div class="arena-camera" id="arenaCamera">
+          <!-- Left: Challenge Prompt & Instructions -->
+          <div class="camera-target-card tilt-card">
+            <div class="target-badge">
+              <span class="pill-dot green"></span>
+              <span>Target Sign to Perform</span>
+            </div>
+
+            <div class="target-letter-display">
+              <div class="target-letter-ring">
+                <span class="target-letter-char" id="camera-target-letter">A</span>
+              </div>
+              <span class="target-letter-name" id="camera-target-name">Letter A</span>
+              <span class="target-category-pill" id="camera-target-category">Vowel</span>
+            </div>
+
+            <!-- Real-Time AI Detection & Hold Status on Target Card (Never blocks webcam) -->
+            <div class="target-ai-status-card">
+              <div class="ai-status-row">
+                <span class="ai-status-label">Detected:</span>
+                <span class="ai-status-val" id="live-detected-sign">-</span>
+                <span class="ai-match-conf" id="live-detected-conf">(0%)</span>
+              </div>
+              <div class="target-hold-meter-wrap">
+                <div class="target-hold-labels">
+                  <span id="hold-status-label">Show hands to camera...</span>
+                  <span id="hold-percent-label">0%</span>
+                </div>
+                <div class="target-meter-track">
+                  <div class="target-meter-bar" id="live-hold-meter"></div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Discreet Non-Obtrusive Success Feedback on Target Card -->
+            <div class="target-success-banner" id="targetSuccessBanner" hidden style="display: none;">
+              <div class="target-success-content">
+                <span class="target-success-icon">✓</span>
+                <span class="target-success-text">CORRECT!</span>
+                <span class="target-success-points" id="targetSuccessPoints">+100 PTS</span>
+              </div>
+            </div>
+
+            <div class="target-instructions-box">
+              <p class="target-short-hint" id="camera-target-short">
+                Position your hands in camera view to form this sign.
+              </p>
+            </div>
+
+            <!-- Hint Controls -->
+            <div class="target-actions">
+              <button type="button" class="btn btn-glass btn-hint" id="btn-camera-hint">
+                <span class="hint-icon">💡</span>
+                <span id="btn-camera-hint-text">Show Reference Photo</span>
+              </button>
+              <button type="button" class="btn btn-ghost btn-skip" id="btn-camera-skip">
+                <span>Skip Letter</span>
+                <span class="skip-arrow">↷</span>
+              </button>
+            </div>
+
+            <!-- Hint Popout Card (Initially Hidden) -->
+            <div class="hint-preview-card" id="cameraHintPreview" hidden style="display: none;">
+              <div class="hint-header">
+                <span class="hint-title">Reference ISL Gesture</span>
+                <button type="button" class="hint-close-btn" id="btn-close-hint" aria-label="Close Hint">✕</button>
+              </div>
+              <div class="hint-image-wrap">
+                <img src="/assets/images/quiz_letters/a.jpg" alt="ISL Letter Reference" id="camera-hint-img" class="hint-img" loading="lazy">
+              </div>
+              <p class="hint-desc" id="camera-hint-desc">Formation instructions loading...</p>
+            </div>
+          </div>
+
+          <!-- Right: Interactive HD Camera Feed with 3D Skeleton Canvas (Completely Clear Viewport) -->
+          <div class="camera-feed-card">
+            <div class="feed-window-header">
+              <div class="feed-status-badge" id="camera-stream-status">
+                <span class="status-dot green"></span>
+                <span id="stream-status-text">Webcam Live</span>
+              </div>
+              <div class="feed-hands-badge" id="camera-hands-badge">
+                🖐️ 0 Hands
+              </div>
+              <button class="cam-pause-btn" id="btn-toggle-cam" title="Toggle Camera">Pause Camera</button>
+            </div>
+
+            <div class="feed-viewport">
+              <video id="quiz-webcam" autoplay playsinline muted></video>
+              <canvas id="quiz-skeleton-canvas"></canvas>
+            </div>
+          </div>
+        </div>
+
+        <!-- -------------------------------------------------------------
+             B. VISUAL MULTIPLE-CHOICE QUIZ ARENA (Flashcard / Picture Mode)
+             ------------------------------------------------------------- -->
+        <div class="arena-visual" id="arenaVisual" style="display: none;">
+          <div class="visual-question-card tilt-card">
+            <div class="visual-q-header">
+              <span class="q-badge" id="visual-q-type-badge">Recognize the Sign</span>
+              <h2 class="visual-q-title" id="visual-q-prompt">Which Indian Sign Language letter is this?</h2>
+            </div>
+
+            <!-- Central Question Display (Image OR Target Letter) -->
+            <div class="visual-question-media" id="visualMediaContainer">
+              <div class="visual-photo-wrap" id="visualPhotoWrap">
+                <img src="/assets/images/quiz_letters/a.jpg" alt="ISL Sign Gesture" id="visual-main-image" class="visual-large-photo">
+              </div>
+              <div class="visual-letter-wrap" id="visualLetterWrap" style="display: none;">
+                <div class="large-letter-circle" id="visual-large-letter"></div>
+                <span class="letter-hint-sub">Select the authentic hand gesture for this letter below</span>
+              </div>
+            </div>
+
+            <!-- 4 Multiple Choice Options (Text Chips OR Photo Cards) -->
+            <div class="visual-options-grid" id="visualOptionsGrid">
+              <!-- Dynamically populated 4 options -->
+            </div>
+
+            <!-- Explanation & Feedback Banner (Shown after selection) -->
+            <div class="visual-feedback-card" id="visualFeedbackCard" style="display: none;">
+              <div class="feedback-status-row">
+                <span class="feedback-icon" id="feedback-icon">✓</span>
+                <span class="feedback-heading" id="feedback-heading">Excellent! Correct.</span>
+                <span class="feedback-score-add" id="feedback-score-add">+100 PTS</span>
+              </div>
+              <p class="feedback-explanation" id="feedback-explanation">Explanation loading...</p>
+              <div class="feedback-actions">
+                <button type="button" class="btn btn-primary btn-md glow-btn" id="btn-next-question">
+                  <span>Next Question</span>
+                  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14m-7-7 7 7-7 7"/></svg>
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- =====================================================================
+         3. QUIZ RESULTS & 26-LETTER MASTERY MATRIX SCREEN
+         ===================================================================== -->
+    <section class="quiz-screen" id="screen-results">
+      <div class="results-container">
+        <!-- Confetti Canvas -->
+        <canvas id="results-confetti-canvas"></canvas>
+
+        <div class="results-hero-card tilt-card">
+          <div class="results-badge" id="results-rank-badge">
+            <span class="rank-icon">👑</span>
+            <span class="rank-name" id="results-rank-title">ISL Grand Master</span>
+          </div>
+
+          <h1 class="results-heading">Quiz Complete!</h1>
+          <p class="results-lead" id="results-lead-text">
+            Outstanding performance! You have mastered the manual alphabet of Indian Sign Language.
+          </p>
+
+          <!-- Core Stat Counters Strip -->
+          <div class="results-stats-grid">
+            <div class="stat-card">
+              <span class="stat-icon">⭐</span>
+              <span class="stat-number" id="res-score">0</span>
+              <span class="stat-label">Total Points</span>
+            </div>
+            <div class="stat-card">
+              <span class="stat-icon">🎯</span>
+              <span class="stat-number" id="res-accuracy">0%</span>
+              <span class="stat-label">Accuracy</span>
+            </div>
+            <div class="stat-card">
+              <span class="stat-icon">✓</span>
+              <span class="stat-number" id="res-correct">0/26</span>
+              <span class="stat-label">Correct First Try</span>
+            </div>
+            <div class="stat-card">
+              <span class="stat-icon">🔥</span>
+              <span class="stat-number" id="res-streak">0</span>
+              <span class="stat-label">Longest Streak</span>
+            </div>
+            <div class="stat-card">
+              <span class="stat-icon">⏱️</span>
+              <span class="stat-number" id="res-time">00:00</span>
+              <span class="stat-label">Total Time</span>
+            </div>
+          </div>
+
+          <!-- Comprehensive 26-Letter Performance Matrix -->
+          <div class="matrix-section">
+            <div class="matrix-header">
+              <div class="matrix-title-group">
+                <h2 class="matrix-title">All 26 Letters Performance Matrix (A – Z)</h2>
+                <span class="matrix-subtitle">Click any letter card to inspect its official photograph, hand formation, and posture guide</span>
+              </div>
+              <div class="matrix-legend">
+                <span class="legend-item"><span class="legend-dot green"></span> Mastered</span>
+                <span class="legend-item"><span class="legend-dot yellow"></span> Used Hint</span>
+                <span class="legend-item"><span class="legend-dot red"></span> Needs Practice</span>
+              </div>
+            </div>
+
+            <!-- Grid of 26 Letters -->
+            <div class="letters-matrix-grid" id="lettersMatrixGrid">
+              <!-- Dynamically populated 26 cards: A to Z -->
+            </div>
+          </div>
+
+          <!-- Action Buttons -->
+          <div class="results-actions">
+            <button type="button" class="btn btn-primary btn-lg glow-btn" id="btn-retake-quiz">
+              <span class="btn-sparkle">🔁</span>
+              <span>Retake Quiz</span>
+            </button>
+            <button type="button" class="btn btn-glass btn-lg" id="btn-practice-weak" hidden>
+              <span>Practice Weak Letters</span>
+              <span class="weak-count-badge" id="weak-count-badge">0</span>
+            </button>
+            <a href="/predict" class="btn btn-secondary btn-lg">
+              <span>Open Prediction Studio</span>
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14m-7-7 7 7-7 7"/></svg>
+            </a>
+            <a href="/" class="btn btn-ghost btn-lg">Back to Homepage</a>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- =========================================================================
+       LETTER DETAIL / STUDY MODAL
+       ========================================================================= -->
+  <div class="quiz-modal" id="letterModal" role="dialog" aria-modal="true" aria-hidden="true">
+    <div class="modal-backdrop" id="modalBackdrop"></div>
+    <div class="modal-card tilt-card">
+      <button class="modal-close-btn" id="btn-modal-close" aria-label="Close Modal">✕</button>
+
+      <div class="modal-body">
+        <div class="modal-left">
+          <div class="modal-letter-badge">
+            <span class="badge-char" id="modal-letter-char">A</span>
+            <span class="badge-name" id="modal-letter-name">Letter A</span>
+          </div>
+          <div class="modal-img-wrap">
+            <img src="/assets/images/quiz_letters/a.jpg" alt="ISL Hand Gesture" id="modal-img" class="modal-photo">
+          </div>
+        </div>
+
+        <div class="modal-right">
+          <span class="modal-category-tag" id="modal-category">Vowel Sign</span>
+          <h3 class="modal-title" id="modal-title">Formation Instructions</h3>
+          <p class="modal-desc" id="modal-desc">Loading instructions...</p>
+
+          <div class="modal-tips-box">
+            <span class="tips-heading">💡 Signer's Pro Tip:</span>
+            <p class="tips-text" id="modal-tips">Loading tip...</p>
+          </div>
+
+          <div class="modal-actions">
+            <button type="button" class="btn btn-glass btn-sm" id="btn-modal-pronounce">
+              <span>🔊 Listen</span>
+            </button>
+            <button type="button" class="btn btn-primary btn-sm" id="btn-modal-ok">Got It</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Main Quiz Scripts -->
+  <script src="quiz.js?v=20261104_5"></script>
+</body>
+</html>
+

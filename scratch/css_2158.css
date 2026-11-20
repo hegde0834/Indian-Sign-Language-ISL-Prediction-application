@@ -1,0 +1,431 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>🗣️ Reverse Speech to Sign – 3D Sign Animation | ISL Detect</title>
+  <meta name="description"
+    content="Reverse speech-to-sign translation for Indian Sign Language: speak or type everyday phrases in English, Hindi, or Kannada and watch an articulated 3D avatar translate your speech into neat, easy-to-understand sign animations.">
+
+  <!-- Typography from Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Outfit:wght@500;600;700;800&family=Sora:wght@600;700;800&family=Noto+Sans+Kannada:wght@500;700&family=Noto+Sans+Devanagari:wght@500;700&display=swap"
+    rel="stylesheet">
+
+  <!-- Three.js 3D Graphics Engine + OrbitControls via CDN with automatic built-in 3D Canvas Fallback -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/three@0.128.0/examples/js/controls/OrbitControls.js"></script>
+
+  <!-- Stylesheets -->
+  <link rel="stylesheet" href="/style.css">
+  <link rel="stylesheet" href="/speech_to_sign.css">
+</head>
+
+<body class="s2s-body">
+  <!-- Ambient 3D Glow Background -->
+  <div class="ambient-glow orb-purple" aria-hidden="true"></div>
+  <div class="ambient-glow orb-cyan" aria-hidden="true"></div>
+  <div class="ambient-glow orb-blue" aria-hidden="true"></div>
+
+  <!-- =========================================================================
+       1. TOP APPLICATION WINDOW BAR
+       ========================================================================= -->
+  <header class="app-window-bar">
+    <div class="window-left">
+      <div class="window-dots" aria-hidden="true">
+        <span class="dot dot-red"></span>
+        <span class="dot dot-yellow"></span>
+        <span class="dot dot-green"></span>
+      </div>
+      <div class="s2s-nav-brand">
+        <a href="/" class="brand-link" title="Return to Home">
+          <svg viewBox="0 0 32 32" width="22" height="22" fill="none">
+            <rect width="32" height="32" rx="7" fill="url(#s2s-grad)" />
+            <path d="M10 22v-8m4 8V8m4 14V11m4 11v-6" stroke="#ffffff" stroke-width="2.2" stroke-linecap="round" />
+            <defs>
+              <linearGradient id="s2s-grad" x1="0" y1="0" x2="32" y2="32" gradientUnits="userSpaceOnUse">
+                <stop stop-color="#00f0ff" />
+                <stop offset="0.5" stop-color="#2563eb" />
+                <stop offset="1" stop-color="#7c3aed" />
+              </linearGradient>
+            </defs>
+          </svg>
+          <span class="brand-text">ISL Detect</span>
+        </a>
+        <span class="bar-divider">/</span>
+        <span class="page-title">🗣️ Reverse Speech to 3D Sign</span>
+      </div>
+    </div>
+
+    <div class="window-right">
+      <div class="feature-tag-badge">
+        <span class="pulse-dot"></span>
+        <span>3D Sign Motion Engine Active</span>
+      </div>
+      <a href="/lessons" class="btn-nav-link btn-nav-purple">
+        <span>🎥 Video Lessons</span>
+      </a>
+      <a href="/quiz" class="btn-nav-link btn-nav-cyan">
+        <span>🎯 Sign Quiz</span>
+      </a>
+      <a href="/predict" class="btn-nav-link btn-nav-glass">
+        <span>⚡ Live Studio</span>
+      </a>
+      <a href="/" class="btn-nav-link btn-nav-glass">
+        <span>Home</span>
+      </a>
+    </div>
+  </header>
+
+  <!-- =========================================================================
+       2. MAIN CONTAINER
+       ========================================================================= -->
+  <main class="s2s-main-container">
+
+    <!-- Header Hero Description -->
+    <section class="s2s-hero-header">
+      <div class="s2s-hero-badge">
+        <span>✨ Two-Way Voice-to-Sign Communication</span>
+      </div>
+      <h1 class="s2s-hero-title">Speech to 3D Sign Language Translation</h1>
+      <p class="s2s-hero-lead">
+        Speak into your microphone in <strong>English</strong>, <strong>Hindi (हिन्दी)</strong>, or <strong>Kannada (ಕನ್ನಡ)</strong>, or type any phrase. Click <strong>"Translate to Sign"</strong> to watch the 3D Avatar perform clear, neat, and anatomically accurate sign language animations!
+      </p>
+    </section>
+
+    <!-- =========================================================================
+         3. VOICE & TEXT SPEECH INPUT CONSOLE
+         ========================================================================= -->
+    <section class="s2s-input-deck" aria-label="Speech Input Controls">
+      <div class="input-deck-inner">
+
+        <!-- Mic Control Column -->
+        <div class="mic-control-col">
+          <button type="button" class="s2s-mic-btn" id="s2sMicBtn" title="Click to start / stop microphone listening" aria-label="Activate voice microphone">
+            <div class="mic-ripple-ring ring-1"></div>
+            <div class="mic-ripple-ring ring-2"></div>
+            <div class="mic-icon-wrap">
+              <span class="mic-icon" id="micIcon">🎙️</span>
+            </div>
+            <span class="mic-status-text" id="micStatusText">Click to Speak</span>
+          </button>
+
+          <!-- Language Selector -->
+          <div class="lang-selector-wrap">
+            <label for="s2sLangSelect" class="lang-select-label">Voice Language:</label>
+            <select id="s2sLangSelect" class="s2s-lang-select">
+              <option value="en-IN" selected>🇮🇳 English (India)</option>
+              <option value="hi-IN">🇮🇳 Hindi (हिन्दी)</option>
+              <option value="kn-IN">🇮🇳 Kannada (ಕನ್ನಡ)</option>
+            </select>
+          </div>
+        </div>
+
+        <!-- Text Input & Live Speech Transcript -->
+        <div class="transcript-col">
+          <div class="transcript-header">
+            <span class="transcript-title">Spoken Text / Speech Input:</span>
+            <span class="transcript-indicator" id="transcriptIndicator">Ready for speech or text input...</span>
+          </div>
+
+          <div class="transcript-input-wrap">
+            <textarea id="s2sTextInput" class="s2s-text-input" rows="2"
+              placeholder="Speak using microphone or type: 'Hello', 'How are you', 'Hello how are you', 'Thank you', 'I am fine', 'What is your name', 'My name is Rahul', 'Nice to meet you', 'Please help me', 'Washroom', 'Good morning'..." spellcheck="false"></textarea>
+            
+            <div class="transcript-actions">
+              <button type="button" class="btn-s2s-action btn-translate" id="btnTranslate" title="Click to play 3D sign animation">
+                <span>🪄 Translate to Sign</span>
+              </button>
+              <button type="button" class="btn-s2s-action btn-clear" id="btnClearText" title="Clear text">
+                <span>✕ Clear</span>
+              </button>
+            </div>
+          </div>
+
+          <!-- Dynamic Match Feedback Banner -->
+          <div class="s2s-match-feedback" id="matchFeedback">
+            <span class="match-icon" id="feedbackIcon">💡</span>
+            <span class="match-msg" id="matchMsg">
+              Enter any of the 10 phrases (e.g. <em>"Hello how are you"</em>) and click <strong>Translate to Sign</strong> to trigger the 3D animation!
+            </span>
+          </div>
+        </div>
+
+      </div>
+
+      <!-- Quick 10 Everyday Phrases Quick-Chips -->
+      <div class="quick-phrases-bar">
+        <span class="quick-phrases-label">⚡ 10 Everyday ISL Phrases (Click any to test):</span>
+        <div class="quick-chips-scroll" id="quickChipsContainer">
+          <button type="button" class="quick-chip active" data-key="hello_namaste">1. Hello / Namaste</button>
+          <button type="button" class="quick-chip" data-key="thank_you">2. Thank You</button>
+          <button type="button" class="quick-chip" data-key="how_are_you">3. How Are You?</button>
+          <button type="button" class="quick-chip" data-key="i_am_fine">4. I Am Fine</button>
+          <button type="button" class="quick-chip" data-key="what_is_your_name">5. What Is Your Name?</button>
+          <button type="button" class="quick-chip" data-key="my_name_is">6. My Name Is...</button>
+          <button type="button" class="quick-chip" data-key="nice_to_meet_you">7. Nice To Meet You</button>
+          <button type="button" class="quick-chip" data-key="please_help_me">8. Please Help Me</button>
+          <button type="button" class="quick-chip" data-key="where_is_washroom">9. Washroom / Toilet</button>
+          <button type="button" class="quick-chip" data-key="good_morning_bye">10. Good Morning / Bye</button>
+        </div>
+      </div>
+    </section>
+
+    <!-- =========================================================================
+         4. HIGH-CLARITY 3D SIGN AVATAR THEATER (Central Stage)
+         ========================================================================= -->
+    <section class="s2s-theater-section" aria-label="3D Sign Language Stage">
+
+      <!-- Theater Stage Card -->
+      <div class="s2s-stage-card">
+
+        <!-- Stage Header Toolbar -->
+        <div class="stage-toolbar">
+          <div class="stage-toolbar-left">
+            <span class="stage-badge">🤖 Articulated 3D Humanoid Avatar</span>
+            <h2 class="stage-heading" id="currentPhraseTitle">Hello / Namaste</h2>
+            <span class="stage-category-pill" id="currentCategoryPill">Greeting</span>
+          </div>
+
+          <div class="stage-toolbar-right">
+            <!-- Animation Speed Controls -->
+            <div class="speed-control-group">
+              <span class="speed-label">Speed:</span>
+              <button type="button" class="speed-btn" data-speed="0.5">0.5x Slow</button>
+              <button type="button" class="speed-btn active" data-speed="1.0">1.0x Normal</button>
+              <button type="button" class="speed-btn" data-speed="1.4">1.4x Fast</button>
+            </div>
+
+            <!-- Replay Button -->
+            <button type="button" class="btn-stage-action btn-replay" id="btnReplaySign" title="Replay current animation">
+              <span>🔄 Replay Sign</span>
+            </button>
+
+            <!-- Reset Camera Button -->
+            <button type="button" class="btn-stage-action btn-reset-cam" id="btnResetCamera" title="Reset 3D camera to front view">
+              <span>🎯 Reset Angle</span>
+            </button>
+          </div>
+        </div>
+
+        <!-- 3D Canvas Viewport Container -->
+        <div class="stage-viewport-container" id="stageViewport">
+          <canvas id="avatarCanvas" width="960" height="560"></canvas>
+
+          <!-- Floating Interactive HUD Overlays -->
+          <div class="stage-floating-hud">
+            <!-- Gesture Active State Banner -->
+            <div class="hud-phrase-banner" id="hudPhraseBanner">
+              <div class="hud-status-indicator">
+                <span class="status-dot-pulse"></span>
+                <span class="hud-action-tag" id="hudActionTag">Sign Active</span>
+              </div>
+              <div class="hud-title-line">
+                <span class="hud-phrase-text" id="hudPhraseText">Hello / Namaste</span>
+              </div>
+            </div>
+
+            <!-- Sequence Tracker (For multi-phrase input like 'Hello how are you') -->
+            <div class="hud-sequence-tracker" id="hudSequenceTracker" hidden>
+              <span class="seq-label">Sentence Sequence:</span>
+              <div class="seq-chips" id="seqChipsRow"></div>
+            </div>
+
+            <!-- Real-Time Kinematic Gesture Step Tracker -->
+            <div class="hud-step-tracker" id="hudStepTracker">
+              <div class="step-tracker-header">
+                <span class="tracker-title">📍 Motion Phase:</span>
+                <span class="tracker-current-step" id="trackerCurrentStepText">Namaste Prayer Posture</span>
+              </div>
+              <div class="step-progress-track">
+                <div class="step-progress-fill" id="stepProgressFill" style="width: 50%;"></div>
+              </div>
+              <div class="step-badges-row" id="stepBadgesRow">
+                <!-- Dynamically populated per gesture -->
+              </div>
+            </div>
+
+            <!-- Camera Drag Hint -->
+            <div class="hud-orbit-hint" title="Drag with mouse or touch to rotate 3D view">
+              <span>🖱️ Drag to rotate 360° | Scroll to Zoom</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Stage Footer Information Strip -->
+        <div class="stage-footer-strip">
+          <div class="footer-feat-item">
+            <span class="feat-icon">🖐️</span>
+            <span>Hand Articulation: <strong>Dual 21-Joint Skeletal Tracking</strong></span>
+          </div>
+          <div class="footer-feat-item">
+            <span class="feat-icon">📐</span>
+            <span>Dataset: <strong>Parametric 3D ISL Keyframe Matrix</strong></span>
+          </div>
+          <div class="footer-feat-item">
+            <span class="feat-icon">⚡</span>
+            <span>Dynamics: <strong>Cubic Kinematic Easing &amp; Micro-Sway</strong></span>
+          </div>
+          <div class="stage-color-legend">
+            <span class="legend-chip chip-cyan">● Right Hand (Dominant)</span>
+            <span class="legend-chip chip-purple">● Left Hand (Base)</span>
+          </div>
+        </div>
+
+      </div>
+
+      <!-- =====================================================================
+           5. LINGUISTIC GUIDE & SIGN BREAKDOWN CARD (Beside / Under Avatar)
+           ===================================================================== -->
+      <aside class="linguistic-side-card" id="linguisticCard">
+
+        <!-- Trilingual Vocalizations & Meaning -->
+        <div class="side-card-header">
+          <div class="side-card-title-wrap">
+            <span class="side-card-badge">🗣️ Trilingual Pronunciation & Meaning</span>
+            <h3 class="side-card-title" id="sideCardTitle">Sign Breakdown & Linguistic Parameters</h3>
+          </div>
+        </div>
+
+        <div class="side-card-body">
+
+          <!-- Trilingual Vocalization Tags -->
+          <div class="trilingual-block">
+            <div class="tri-tag-item">
+              <span class="tri-lang-code tag-en">EN</span>
+              <span class="tri-text-val" id="tagEnglish">Hello / Welcome</span>
+              <button type="button" class="btn-voice-speak" id="btnAudioEn" title="Listen in English">🔊</button>
+            </div>
+            <div class="tri-tag-item">
+              <span class="tri-lang-code tag-hi">HI</span>
+              <span class="tri-text-val" id="tagHindi">नमस्ते / नमस्कार</span>
+              <button type="button" class="btn-voice-speak" id="btnAudioHi" title="Listen in Hindi">🔊</button>
+            </div>
+            <div class="tri-tag-item">
+              <span class="tri-lang-code tag-kn">KN</span>
+              <span class="tri-text-val" id="tagKannada">ನಮಸ್ಕಾರ / ಸುಸ್ವಾಗತ</span>
+              <button type="button" class="btn-voice-speak" id="btnAudioKn" title="Listen in Kannada">🔊</button>
+            </div>
+          </div>
+
+          <!-- 4 Core Spatial Components of Indian Sign Language -->
+          <div class="components-matrix">
+            <h4 class="comp-matrix-title">📐 4 Linguistic Parameters of ISL Sign:</h4>
+            
+            <div class="comp-row">
+              <div class="comp-cell">
+                <span class="cell-label">🖐️ Handshape</span>
+                <span class="cell-val" id="compHandshape">B-Handshape (Flat open palms, fingers aligned)</span>
+              </div>
+              <div class="comp-cell">
+                <span class="cell-label">📍 Signing Location</span>
+                <span class="cell-val" id="compLocation">Center of Chest / Sternum (Midline)</span>
+              </div>
+            </div>
+
+            <div class="comp-row">
+              <div class="comp-cell">
+                <span class="cell-label">🔄 Movement Dynamic</span>
+                <span class="cell-val" id="compMovement">Symmetrical bilateral lift towards midline, gentle hold</span>
+              </div>
+              <div class="comp-cell">
+                <span class="cell-label">😊 Facial Expression</span>
+                <span class="cell-val" id="compExpression">Warm smile with 15-degree polite forward head bow</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Step-by-Step Signing Guide -->
+          <div class="steps-guide-block">
+            <h4 class="steps-guide-title">📋 Step-by-Step Gesture Execution:</h4>
+            <ol class="steps-guide-list" id="guideStepsList">
+              <li>Raise both hands to mid-chest height with open flat palms facing one another.</li>
+              <li>Bring palms and fingers together smoothly at the sternum in a Namaste posture.</li>
+              <li>Gently tilt head forward with a warm, respectful facial expression.</li>
+            </ol>
+          </div>
+
+          <!-- Cultural Context -->
+          <div class="cultural-guide-block">
+            <span class="cult-icon">🏛️</span>
+            <div class="cult-content">
+              <strong>Deaf Community Cultural Context:</strong>
+              <p id="culturalNoteText">
+                In Indian Sign Language, Namaste is both an informal greeting and a universal mark of respect when welcoming guests, elders, and community members.
+              </p>
+            </div>
+          </div>
+
+        </div>
+      </aside>
+
+    </section>
+
+    <!-- =========================================================================
+         6. HOW REVERSE SPEECH-TO-SIGN WORKS
+         ========================================================================= -->
+    <section class="s2s-workflow-card">
+      <div class="workflow-header">
+        <h3 class="workflow-title">How Reverse Speech-to-Sign Works</h3>
+        <span class="workflow-subtitle">Empowering hearing individuals to communicate with deaf community members</span>
+      </div>
+
+      <div class="workflow-grid-3">
+        <div class="workflow-step-card">
+          <div class="step-num-badge">1</div>
+          <div class="step-icon">🎙️</div>
+          <h4 class="step-title">1. Multilingual Voice Input</h4>
+          <p class="step-desc">
+            The hearing user speaks in English, Hindi, or Kannada. The neural speech recognition engine transcribes the acoustic signal into normalized text in real time.
+          </p>
+        </div>
+
+        <div class="workflow-step-card">
+          <div class="step-num-badge">2</div>
+          <div class="step-icon">🧠</div>
+          <h4 class="step-title">2. Semantic Sign Parser</h4>
+          <p class="step-desc">
+            The NLP parser identifies single or compound phrases (such as <em>"Hello how are you"</em>), decomposes them into sign sequence tokens, and fetches the corresponding 3D motion keyframe dataset.
+          </p>
+        </div>
+
+        <div class="workflow-step-card">
+          <div class="step-num-badge">3</div>
+          <div class="step-icon">🤖</div>
+          <h4 class="step-title">3. Neat 3D Avatar Signing</h4>
+          <p class="step-desc">
+            The 3D avatar executes smooth, articulated joint rotations with complete 5-finger tracking, high visual clarity, and real-time step tracking indicators.
+          </p>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- =========================================================================
+       7. GLOBAL FOOTER
+       ========================================================================= -->
+  <footer class="s2s-footer">
+    <div class="footer-inner">
+      <div class="footer-left">
+        <strong>ISL Detect – Smart Assistive Communication System</strong>
+        <span>Department of Master of Computer Applications, The National Institute of Engineering, Mysuru</span>
+      </div>
+      <div class="footer-links">
+        <a href="/">Home</a>
+        <a href="/predict">Live Studio</a>
+        <a href="/quiz">Sign Quiz</a>
+        <a href="/lessons">Video Lessons</a>
+        <a href="/speech-to-sign" class="active">Speech to Sign</a>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Main Speech to Sign 3D Controller -->
+  <script src="/speech_to_sign.js"></script>
+</body>
+
+</html>

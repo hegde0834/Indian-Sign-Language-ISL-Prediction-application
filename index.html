@@ -1,0 +1,779 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ISL Detect – 3D Indian Sign Language Recognition & Speech Platform</title>
+  <meta name="description"
+    content="AI-powered Indian Sign Language (ISL) detection platform using MediaPipe 3D hand tracking, XGBoost classification, and real-time multilingual speech in English, Hindi, and Kannada.">
+
+  <!-- Modern Typography from Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&family=Sora:wght@600;700;800&family=Space+Grotesk:wght@600;700&display=swap"
+    rel="stylesheet">
+
+  <!-- Main Stylesheet -->
+  <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+  <!-- Accessible Skip Link -->
+  <a class="skip-link" href="#main-content">Skip to content</a>
+
+  <!-- Top Ambient Floating Particles & 3D Lighting -->
+  <div class="ambient-glow orb-purple" aria-hidden="true"></div>
+  <div class="ambient-glow orb-cyan" aria-hidden="true"></div>
+  <div class="ambient-glow orb-blue" aria-hidden="true"></div>
+
+  <!-- =========================================================================
+       1. NAVIGATION BAR
+       ========================================================================= -->
+  <header class="navbar" id="navbar">
+    <div class="nav-container">
+      <a href="#hero" class="nav-brand" aria-label="ISL Detect Homepage">
+        <div class="brand-icon">
+          <svg viewBox="0 0 32 32" width="28" height="28" fill="none">
+            <rect width="32" height="32" rx="9" fill="url(#nav-grad)" />
+            <path d="M10 22v-8m4 8V8m4 14V11m4 11v-6" stroke="#ffffff" stroke-width="2.5" stroke-linecap="round" />
+            <defs>
+              <linearGradient id="nav-grad" x1="0" y1="0" x2="32" y2="32" gradientUnits="userSpaceOnUse">
+                <stop stop-color="#00f0ff" />
+                <stop offset="0.5" stop-color="#2563eb" />
+                <stop offset="1" stop-color="#7c3aed" />
+              </linearGradient>
+            </defs>
+          </svg>
+        </div>
+        <div class="brand-text">
+          <span class="brand-title">ISL Detect</span>
+          <span class="brand-badge">AI 3D Platform</span>
+        </div>
+      </a>
+
+      <!-- Desktop Navigation Links -->
+      <nav class="nav-menu" id="navMenu" aria-label="Main Navigation">
+        <a href="#hero" class="nav-link active">Home</a>
+        <a href="#about" class="nav-link">About ISL</a>
+        <a href="#how" class="nav-link">How It Works</a>
+        <a href="#architecture" class="nav-link">Architecture</a>
+        <a href="#vocabulary" class="nav-link">Vocabulary</a>
+        <a href="/lessons" class="nav-link" style="color: #c084fc; font-weight: 700;">🎥 Video Lessons</a>
+        <a href="/quiz" class="nav-link" style="color: #00ffff; font-weight: 700;">🎯 Sign Quiz</a>
+        <a href="/predict" class="btn btn-nav glow-btn" data-predict>
+          <span class="btn-sparkle">⚡</span>
+          <span>Start Prediction</span>
+        </a>
+      </nav>
+
+      <!-- Mobile Hamburger Button -->
+      <button class="mobile-toggle" id="mobileToggle" aria-label="Toggle mobile menu" aria-expanded="false"
+        aria-controls="navMenu">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+    </div>
+  </header>
+
+  <!-- =========================================================================
+       2. HERO SECTION
+       ========================================================================= -->
+  <main id="main-content">
+    <section class="hero-section" id="hero">
+      <div class="hero-bg-overlay" aria-hidden="true"></div>
+
+      <div class="container hero-container">
+        <!-- Hero Copy -->
+        <div class="hero-content">
+          <div class="badge-pill">
+            <span class="pill-dot"></span>
+            <span class="pill-text">AI-Powered Indian Sign Recognition • 98.4% Accuracy</span>
+          </div>
+
+          <h1 class="hero-heading">
+            Breaking Barriers Through <span class="gradient-text">Indian Sign Language</span>
+          </h1>
+
+          <p class="hero-lead">
+            Empowering seamless, inclusive communication for the Deaf and hard-of-hearing communities.
+            Our intelligent computer vision platform translates real-time 3D hand gestures into text and natural voice
+            in
+            <strong>English</strong>, <strong>Hindi</strong>, and <strong>Kannada</strong>.
+          </p>
+
+          <div class="hero-cta-group">
+            <a href="/predict" class="btn btn-primary btn-lg glow-btn" data-predict>
+              <span>Start Prediction</span>
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"
+                stroke-linecap="round" stroke-linejoin="round">
+                <path d="M5 12h14m-7-7 7 7-7 7" />
+              </svg>
+            </a>
+            <a href="/lessons" class="btn btn-secondary btn-lg glow-btn"
+              style="background: rgba(147, 51, 234, 0.2); border-color: rgba(147, 51, 234, 0.5); color: #fff;">
+              <span>🎥 Video Lessons</span>
+            </a>
+            <a href="/quiz" class="btn btn-secondary btn-lg glow-btn"
+              style="background: rgba(0, 240, 255, 0.15); border-color: rgba(0, 240, 255, 0.4); color: #fff;">
+              <span>🎯 26-Letter Quiz</span>
+            </a>
+          </div>
+
+          <!-- Real-Time Metrics Strip -->
+          <div class="hero-metrics">
+            <div class="metric-item">
+              <span class="metric-value">26+</span>
+              <span class="metric-label">Sign Vocabularies</span>
+            </div>
+            <div class="metric-sep"></div>
+            <div class="metric-item">
+              <span class="metric-value">238</span>
+              <span class="metric-label">3D Spatial Features</span>
+            </div>
+            <div class="metric-sep"></div>
+            <div class="metric-item">
+              <span class="metric-value">3</span>
+              <span class="metric-label">Vocal Languages</span>
+            </div>
+            <div class="metric-sep"></div>
+            <div class="metric-item">
+              <span class="metric-value">&lt;35ms</span>
+              <span class="metric-label">Inference Latency</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- 3D Interactive Hand Hologram Card -->
+        <div class="hero-visual" id="heroVisual">
+          <div class="hologram-card tilt-card" id="hologramCard">
+            <!-- Hologram Top HUD -->
+            <div class="holo-header">
+              <div class="holo-indicator">
+                <span class="holo-radar"></span>
+                <span>MediaPipe 3D Landmark Tracker</span>
+              </div>
+              <span class="holo-fps">60 FPS</span>
+            </div>
+
+            <!-- SVG 21-Node Hand Landmark Skeleton -->
+            <div class="holo-svg-container">
+              <svg id="heroHandSvg" viewBox="0 0 300 360" aria-label="3D Hand Landmark Tracking Diagram"></svg>
+            </div>
+
+            <!-- Floating Holographic Badge -->
+            <div class="holo-badge holo-badge-top">
+              <span class="badge-icon">🖐️</span>
+              <div class="badge-info">
+                <span class="badge-sub">Detected Gesture</span>
+                <span class="badge-val">Sign: "HELLO" (98.6%)</span>
+              </div>
+            </div>
+
+            <div class="holo-badge holo-badge-bottom">
+              <span class="badge-icon">🔊</span>
+              <div class="badge-info">
+                <span class="badge-sub">Live Vocalization</span>
+                <span class="badge-val">ಕನ್ನಡ: "ನಮಸ್ಕಾರ"</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- =========================================================================
+         3. ABOUT INDIAN SIGN LANGUAGE SECTION
+         ========================================================================= -->
+    <section class="section about-section" id="about">
+      <div class="container">
+        <div class="section-header">
+          <div class="section-tag">Empowering Accessibility</div>
+          <h2 class="section-title">About Indian Sign Language</h2>
+          <p class="section-subtitle">
+            Indian Sign Language (ISL) is a complete, grammatically independent visual language
+            relied upon by over 18 million Deaf and hard-of-hearing individuals across the subcontinent.
+          </p>
+        </div>
+
+        <div class="about-grid">
+          <!-- Left Column: Visual 3D Showcase Card -->
+          <div class="about-visual-card tilt-card">
+            <div class="card-image-wrap">
+              <img src="assets/images/about_isl_visual.jpg"
+                alt="Indian Sign Language Accessibility and Community Harmony" class="about-img" loading="lazy">
+              <div class="image-gradient-overlay"></div>
+            </div>
+            <div class="card-floating-pill">
+              <span class="pill-dot green"></span>
+              <span>Connecting Deaf Communities Across India</span>
+            </div>
+          </div>
+
+          <!-- Right Column: 4 3D Glassmorphism Cards -->
+          <div class="about-cards-grid">
+            <article class="glass-card tilt-card">
+              <div class="card-icon-box">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                  stroke-linejoin="round">
+                  <path
+                    d="M18 11V6a2 2 0 0 0-4 0v5m0-1V4a2 2 0 0 0-4 0v7m0 0V6a2 2 0 0 0-4 0v8c0 4 3 7 7 7s7-3 7-7v-3a2 2 0 0 0-4 0" />
+                </svg>
+              </div>
+              <h3 class="card-title">A Complete, Rich Language</h3>
+              <p class="card-desc">
+                ISL is not a direct translation of spoken languages; it possesses distinct spatial grammar,
+                two-handed signing conventions, and expressive facial morphology.
+              </p>
+            </article>
+
+            <article class="glass-card tilt-card">
+              <div class="card-icon-box">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                  stroke-linejoin="round">
+                  <path d="M21 12a8 8 0 0 1-11.6 7.1L4 20l1-4.6A8 8 0 1 1 21 12z" />
+                </svg>
+              </div>
+              <h3 class="card-title">Everyday Inclusion</h3>
+              <p class="card-desc">
+                Communication barriers often isolate individuals in classrooms, workplaces, and public spaces.
+                ISL recognition bridges this divide with instantaneous translation.
+              </p>
+            </article>
+
+            <article class="glass-card tilt-card">
+              <div class="card-icon-box">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                  stroke-linejoin="round">
+                  <circle cx="12" cy="12" r="9" />
+                  <path d="M3 12h18M12 3a14 14 0 0 1 0 18M12 3a14 14 0 0 0 0 18" />
+                </svg>
+              </div>
+              <h3 class="card-title">Universal Interpreter</h3>
+              <p class="card-desc">
+                Human interpreters are scarce and costly. Our AI engine provides an anytime, anywhere
+                digital interpreter right through any standard web camera.
+              </p>
+            </article>
+
+            <article class="glass-card tilt-card">
+              <div class="card-icon-box">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                  stroke-linejoin="round">
+                  <rect x="2" y="3" width="20" height="14" rx="2" ry="2" />
+                  <line x1="8" y1="21" x2="16" y2="21" />
+                  <line x1="12" y1="17" x2="12" y2="21" />
+                </svg>
+              </div>
+              <h3 class="card-title">Computer Vision & ML</h3>
+              <p class="card-desc">
+                Using 21 metric 3D landmarks per hand, our geometry-based feature engine ensures robust detection
+                regardless of lighting, background clutter, or skin tone.
+              </p>
+            </article>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- =========================================================================
+         4. HOW IT WORKS SECTION
+         ========================================================================= -->
+    <section class="section how-section" id="how">
+      <div class="container">
+        <div class="section-header">
+          <div class="section-tag">Processing Flow</div>
+          <h2 class="section-title">How It Works</h2>
+          <p class="section-subtitle">
+            Three automated, high-speed stages transform physical hand signs into meaningful spoken sentences in real
+            time.
+          </p>
+        </div>
+
+        <!-- 3-Step Process Flow -->
+        <div class="steps-flow-container">
+          <div class="step-card tilt-card">
+            <div class="step-num-pill">01</div>
+            <div class="step-icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                stroke-linejoin="round">
+                <path d="M23 7l-7 5 7 5V7z" />
+                <rect x="1" y="5" width="15" height="14" rx="2" ry="2" />
+              </svg>
+            </div>
+            <h3 class="step-title">Capture Gesture</h3>
+            <p class="step-desc">
+              Position your hands within the HD widescreen camera viewport.
+              The system automatically detects both hands and maps 21 3D landmarks in real time.
+            </p>
+          </div>
+
+          <div class="step-card tilt-card">
+            <div class="step-num-pill">02</div>
+            <div class="step-icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                stroke-linejoin="round">
+                <path
+                  d="M12 2v4M12 18v4M4.93 4.93l2.83 2.83M16.24 16.24l2.83 2.83M2 12h4M18 12h4M4.93 19.07l2.83-2.83M16.24 7.76l2.83-2.83" />
+              </svg>
+            </div>
+            <h3 class="step-title">AI Spatial Prediction</h3>
+            <p class="step-desc">
+              The 238-dimensional geometric vector (bend angles, spans, palm normal vector)
+              is evaluated by XGBoost with sliding-window temporal smoothing.
+            </p>
+          </div>
+
+          <div class="step-card tilt-card">
+            <div class="step-num-pill">03</div>
+            <div class="step-icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                stroke-linejoin="round">
+                <polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5" />
+                <path d="M19.07 4.93a10 10 0 0 1 0 14.14M15.54 8.46a5 5 0 0 1 0 7.07" />
+              </svg>
+            </div>
+            <h3 class="step-title">Display & Speak</h3>
+            <p class="step-desc">
+              Signs construct complete sentences with auto-correction, predictive dictionary words,
+              and instant vocalization in English, Hindi, or Kannada.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- =========================================================================
+         5. SYSTEM ARCHITECTURE SECTION
+         ========================================================================= -->
+    <section class="section architecture-section" id="architecture">
+      <div class="container">
+        <div class="section-header">
+          <div class="section-tag">System Design & Pipeline</div>
+          <h2 class="section-title">System Architecture</h2>
+          <p class="section-subtitle">
+            An end-to-end multi-tier pipeline connecting high-precision 3D computer vision, geometric feature
+            engineering, gradient-boosted classification, and trilingual neural speech synthesis.
+          </p>
+        </div>
+
+        <!-- System Architecture Visual Showcase Card -->
+        <div class="architecture-showcase tilt-card">
+          <div class="arch-img-box">
+            <img src="assets/images/how_it_works_isl.jpg" alt="ISL 3D Machine Learning System Architecture Diagram"
+              class="arch-img" loading="lazy">
+          </div>
+          <div class="arch-content">
+            <div class="badge-pill mini">
+              <span class="pill-dot"></span>
+              <span>Integrated AI Architecture</span>
+            </div>
+            <h3 class="arch-title">Real-Time Spatial Hand Inference</h3>
+            <p class="arch-desc">
+              Webcam video streams are tracked frame-by-frame by Google MediaPipe Tasks HandLandmarker.
+              Extracted 3D points are normalized into wrist-centered 238-dimensional geometric features
+              and classified by a low-latency gradient-boosted XGBoost model.
+            </p>
+            <div class="arch-tags">
+              <span class="arch-tag">MediaPipe Tasks</span>
+              <span class="arch-tag">XGBoost Classifier</span>
+              <span class="arch-tag">Spatial Normalization</span>
+              <span class="arch-tag">Trilingual TTS</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- 4-Pillar Deep-Dive Grid -->
+        <div class="arch-pillars-grid">
+          <div class="arch-pillar-card tilt-card">
+            <div class="pillar-num">Pillar 01</div>
+            <div class="card-icon-box">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                stroke-linejoin="round">
+                <path d="M23 7l-7 5 7 5V7z" />
+                <rect x="1" y="5" width="15" height="14" rx="2" ry="2" />
+              </svg>
+            </div>
+            <h3 class="card-title">Computer Vision Layer</h3>
+            <p class="card-desc">
+              Google MediaPipe Tasks HandLandmarker processes 60 FPS live video, mapping 21 spatial 3D keypoints per
+              hand with sub-millimeter precision across single and two-handed ISL gestures.
+            </p>
+            <div class="pillar-tag">MediaPipe • 21 3D Landmarks</div>
+          </div>
+
+          <div class="arch-pillar-card tilt-card">
+            <div class="pillar-num">Pillar 02</div>
+            <div class="card-icon-box">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                stroke-linejoin="round">
+                <circle cx="12" cy="12" r="10" />
+                <line x1="12" y1="8" x2="12" y2="12" />
+                <line x1="12" y1="16" x2="12.01" y2="16" />
+              </svg>
+            </div>
+            <h3 class="card-title">Geometric Feature Engine</h3>
+            <p class="card-desc">
+              Normalizes coordinates relative to the wrist and derives 238 invariant features: joint bend angles,
+              inter-fingertip Euclidean distances, palm surface normals, and inter-hand spatial offsets.
+            </p>
+            <div class="pillar-tag">238-D Feature Vector</div>
+          </div>
+
+          <div class="arch-pillar-card tilt-card">
+            <div class="pillar-num">Pillar 03</div>
+            <div class="card-icon-box">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                stroke-linejoin="round">
+                <rect x="2" y="3" width="20" height="14" rx="2" ry="2" />
+                <line x1="8" y1="21" x2="16" y2="21" />
+                <line x1="12" y1="17" x2="12" y2="21" />
+              </svg>
+            </div>
+            <h3 class="card-title">XGBoost Inference Engine</h3>
+            <p class="card-desc">
+              Optimized gradient-boosted decision trees deliver predictions in &lt;35ms. Temporal probability averaging
+              over a sliding window suppresses noise and guarantees reliable sign commitment.
+            </p>
+            <div class="pillar-tag">Sub-35ms Latency • XGBoost</div>
+          </div>
+
+          <div class="arch-pillar-card tilt-card">
+            <div class="pillar-num">Pillar 04</div>
+            <div class="card-icon-box">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                stroke-linejoin="round">
+                <polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5" />
+                <path d="M19.07 4.93a10 10 0 0 1 0 14.14M15.54 8.46a5 5 0 0 1 0 7.07" />
+              </svg>
+            </div>
+            <h3 class="card-title">NLP & Multilingual Speech</h3>
+            <p class="card-desc">
+              Sentence builder engine reconstructs grammar and auto-completes vocabulary from a 2,500+ word dictionary,
+              streaming natural neural voices in English, Hindi, and Kannada.
+            </p>
+            <div class="pillar-tag">Trilingual Neural TTS</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- =========================================================================
+         5. ISL VOCABULARY SHOWCASE SECTION
+         ========================================================================= -->
+    <section class="section vocab-section" id="vocabulary">
+      <div class="container">
+        <div class="section-header">
+          <div class="section-tag">Interactive Reference</div>
+          <h2 class="section-title">Recognized ISL Sign Vocabulary (A – Z)</h2>
+          <p class="section-subtitle">
+            Explore the 26 Indian Sign Language manual alphabets recognized by our AI model. Click any letter to open
+            its official hand gesture photo and step-by-step formation instructions.
+          </p>
+        </div>
+
+        <!-- Grid of Vocabulary Chips (Alphabets A to Z) -->
+        <div class="vocab-grid" id="vocabGrid">
+          <!-- Alphabets A - Z with Interactive Sign Photo Preview -->
+          <div class="vocab-card" data-cat="alpha" data-sign="A" tabindex="0" role="button"
+            aria-label="View ISL sign for Letter A"><span class="sign-key">A</span><span
+              class="sign-type">Alphabet</span><span class="sign-view-hint">👁 View Photo</span></div>
+          <div class="vocab-card" data-cat="alpha" data-sign="B" tabindex="0" role="button"
+            aria-label="View ISL sign for Letter B"><span class="sign-key">B</span><span
+              class="sign-type">Alphabet</span><span class="sign-view-hint">👁 View Photo</span></div>
+          <div class="vocab-card" data-cat="alpha" data-sign="C" tabindex="0" role="button"
+            aria-label="View ISL sign for Letter C"><span class="sign-key">C</span><span
+              class="sign-type">Alphabet</span><span class="sign-view-hint">👁 View Photo</span></div>
+          <div class="vocab-card" data-cat="alpha" data-sign="D" tabindex="0" role="button"
+            aria-label="View ISL sign for Letter D"><span class="sign-key">D</span><span
+              class="sign-type">Alphabet</span><span class="sign-view-hint">👁 View Photo</span></div>
+          <div class="vocab-card" data-cat="alpha" data-sign="E" tabindex="0" role="button"
+            aria-label="View ISL sign for Letter E"><span class="sign-key">E</span><span
+              class="sign-type">Alphabet</span><span class="sign-view-hint">👁 View Photo</span></div>
+          <div class="vocab-card" data-cat="alpha" data-sign="F" tabindex="0" role="button"
+            aria-label="View ISL sign for Letter F"><span class="sign-key">F</span><span
+              class="sign-type">Alphabet</span><span class="sign-view-hint">👁 View Photo</span></div>
+          <div class="vocab-card" data-cat="alpha" data-sign="G" tabindex="0" role="button"
+            aria-label="View ISL sign for Letter G"><span class="sign-key">G</span><span
+              class="sign-type">Alphabet</span><span class="sign-view-hint">👁 View Photo</span></div>
+          <div class="vocab-card" data-cat="alpha" data-sign="H" tabindex="0" role="button"
+            aria-label="View ISL sign for Letter H"><span class="sign-key">H</span><span
+              class="sign-type">Alphabet</span><span class="sign-view-hint">👁 View Photo</span></div>
+          <div class="vocab-card" data-cat="alpha" data-sign="I" tabindex="0" role="button"
+            aria-label="View ISL sign for Letter I"><span class="sign-key">I</span><span
+              class="sign-type">Alphabet</span><span class="sign-view-hint">👁 View Photo</span></div>
+          <div class="vocab-card" data-cat="alpha" data-sign="J" tabindex="0" role="button"
+            aria-label="View ISL sign for Letter J"><span class="sign-key">J</span><span
+              class="sign-type">Alphabet</span><span class="sign-view-hint">👁 View Photo</span></div>
+          <div class="vocab-card" data-cat="alpha" data-sign="K" tabindex="0" role="button"
+            aria-label="View ISL sign for Letter K"><span class="sign-key">K</span><span
+              class="sign-type">Alphabet</span><span class="sign-view-hint">👁 View Photo</span></div>
+          <div class="vocab-card" data-cat="alpha" data-sign="L" tabindex="0" role="button"
+            aria-label="View ISL sign for Letter L"><span class="sign-key">L</span><span
+              class="sign-type">Alphabet</span><span class="sign-view-hint">👁 View Photo</span></div>
+          <div class="vocab-card" data-cat="alpha" data-sign="M" tabindex="0" role="button"
+            aria-label="View ISL sign for Letter M"><span class="sign-key">M</span><span
+              class="sign-type">Alphabet</span><span class="sign-view-hint">👁 View Photo</span></div>
+          <div class="vocab-card" data-cat="alpha" data-sign="N" tabindex="0" role="button"
+            aria-label="View ISL sign for Letter N"><span class="sign-key">N</span><span
+              class="sign-type">Alphabet</span><span class="sign-view-hint">👁 View Photo</span></div>
+          <div class="vocab-card" data-cat="alpha" data-sign="O" tabindex="0" role="button"
+            aria-label="View ISL sign for Letter O"><span class="sign-key">O</span><span
+              class="sign-type">Alphabet</span><span class="sign-view-hint">👁 View Photo</span></div>
+          <div class="vocab-card" data-cat="alpha" data-sign="P" tabindex="0" role="button"
+            aria-label="View ISL sign for Letter P"><span class="sign-key">P</span><span
+              class="sign-type">Alphabet</span><span class="sign-view-hint">👁 View Photo</span></div>
+          <div class="vocab-card" data-cat="alpha" data-sign="Q" tabindex="0" role="button"
+            aria-label="View ISL sign for Letter Q"><span class="sign-key">Q</span><span
+              class="sign-type">Alphabet</span><span class="sign-view-hint">👁 View Photo</span></div>
+          <div class="vocab-card" data-cat="alpha" data-sign="R" tabindex="0" role="button"
+            aria-label="View ISL sign for Letter R"><span class="sign-key">R</span><span
+              class="sign-type">Alphabet</span><span class="sign-view-hint">👁 View Photo</span></div>
+          <div class="vocab-card" data-cat="alpha" data-sign="S" tabindex="0" role="button"
+            aria-label="View ISL sign for Letter S"><span class="sign-key">S</span><span
+              class="sign-type">Alphabet</span><span class="sign-view-hint">👁 View Photo</span></div>
+          <div class="vocab-card" data-cat="alpha" data-sign="T" tabindex="0" role="button"
+            aria-label="View ISL sign for Letter T"><span class="sign-key">T</span><span
+              class="sign-type">Alphabet</span><span class="sign-view-hint">👁 View Photo</span></div>
+          <div class="vocab-card" data-cat="alpha" data-sign="U" tabindex="0" role="button"
+            aria-label="View ISL sign for Letter U"><span class="sign-key">U</span><span
+              class="sign-type">Alphabet</span><span class="sign-view-hint">👁 View Photo</span></div>
+          <div class="vocab-card" data-cat="alpha" data-sign="V" tabindex="0" role="button"
+            aria-label="View ISL sign for Letter V"><span class="sign-key">V</span><span
+              class="sign-type">Alphabet</span><span class="sign-view-hint">👁 View Photo</span></div>
+          <div class="vocab-card" data-cat="alpha" data-sign="W" tabindex="0" role="button"
+            aria-label="View ISL sign for Letter W"><span class="sign-key">W</span><span
+              class="sign-type">Alphabet</span><span class="sign-view-hint">👁 View Photo</span></div>
+          <div class="vocab-card" data-cat="alpha" data-sign="X" tabindex="0" role="button"
+            aria-label="View ISL sign for Letter X"><span class="sign-key">X</span><span
+              class="sign-type">Alphabet</span><span class="sign-view-hint">👁 View Photo</span></div>
+          <div class="vocab-card" data-cat="alpha" data-sign="Y" tabindex="0" role="button"
+            aria-label="View ISL sign for Letter Y"><span class="sign-key">Y</span><span
+              class="sign-type">Alphabet</span><span class="sign-view-hint">👁 View Photo</span></div>
+          <div class="vocab-card" data-cat="alpha" data-sign="Z" tabindex="0" role="button"
+            aria-label="View ISL sign for Letter Z"><span class="sign-key">Z</span><span
+              class="sign-type">Alphabet</span><span class="sign-view-hint">👁 View Photo</span></div>
+        </div>
+
+        <!-- Interactive Learning Hub: Quiz & Real Human Video Lessons -->
+        <div
+          style="margin-top: 36px; display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 20px;">
+          <!-- 26-Letter Quiz Card -->
+          <div
+            style="padding: 24px 28px; background: rgba(14, 21, 46, 0.7); border: 1px solid rgba(0, 240, 255, 0.3); border-radius: 18px; display: flex; flex-direction: column; justify-content: space-between; gap: 16px; box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4);">
+            <div style="display: flex; align-items: flex-start; gap: 16px;">
+              <div
+                style="font-size: 2rem; width: 52px; height: 52px; border-radius: 14px; background: rgba(0, 240, 255, 0.15); border: 1px solid rgba(0, 240, 255, 0.3); display: flex; align-items: center; justify-content: center; flex-shrink: 0;">
+                🎯</div>
+              <div>
+                <h3
+                  style="font-family: var(--font-display); font-size: 1.2rem; font-weight: 700; color: #fff; margin-bottom: 6px;">
+                  26-Letter Sign Quiz</h3>
+                <p style="color: var(--text-secondary); font-size: 0.9rem; margin: 0; line-height: 1.5;">Challenge
+                  yourself with AI webcam gesture verification or visual flashcard multiple choice!</p>
+              </div>
+            </div>
+            <a href="/quiz" class="btn btn-primary btn-md glow-btn" style="align-self: flex-start; margin-top: 8px;">
+              <span>Launch Sign Quiz</span>
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+                <path d="M5 12h14m-7-7 7 7-7 7" />
+              </svg>
+            </a>
+          </div>
+
+          <!-- Real Human Video Lessons Card -->
+          <div
+            style="padding: 24px 28px; background: rgba(22, 13, 48, 0.7); border: 1px solid rgba(192, 132, 252, 0.35); border-radius: 18px; display: flex; flex-direction: column; justify-content: space-between; gap: 16px; box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4);">
+            <div style="display: flex; align-items: flex-start; gap: 16px;">
+              <div
+                style="font-size: 2rem; width: 52px; height: 52px; border-radius: 14px; background: rgba(192, 132, 252, 0.15); border: 1px solid rgba(192, 132, 252, 0.35); display: flex; align-items: center; justify-content: center; flex-shrink: 0;">
+                🎥</div>
+              <div>
+                <h3
+                  style="font-family: var(--font-display); font-size: 1.2rem; font-weight: 700; color: #fff; margin-bottom: 6px;">
+                  Real Human Video Lessons</h3>
+                <p style="color: var(--text-secondary); font-size: 0.9rem; margin: 0; line-height: 1.5;">Learn 10
+                  everyday ISL phrases & sentences demonstrated by authentic certified human signers with slow-mo
+                  controls & audio!</p>
+              </div>
+            </div>
+            <a href="/lessons" class="btn btn-secondary btn-md glow-btn"
+              style="align-self: flex-start; margin-top: 8px; background: rgba(147, 51, 234, 0.25); border-color: rgba(192, 132, 252, 0.5); color: #fff;">
+              <span>Explore Video Lessons</span>
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+                <path d="M5 12h14m-7-7 7 7-7 7" />
+              </svg>
+            </a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- =========================================================================
+         7. PREDICTION CALL-TO-ACTION SECTION
+         ========================================================================= -->
+    <section class="section cta-section" id="try">
+      <div class="container">
+        <div class="cta-box tilt-card">
+          <div class="cta-badge">
+            <span class="pill-dot"></span>
+            <span>Live Demonstration Ready</span>
+          </div>
+
+          <h2 class="cta-title">Ready to Communicate?</h2>
+          <p class="cta-subtitle">
+            Experience the real-time Indian Sign Language detection studio.
+            Enable your webcam, hold up your hands, and watch signs convert to words and multilingual speech.
+          </p>
+
+          <div class="cta-actions">
+            <a href="/predict" class="btn btn-primary btn-xl glow-btn" data-predict>
+              <span>Launch Live Prediction Studio</span>
+              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"
+                stroke-linecap="round" stroke-linejoin="round">
+                <polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2" />
+              </svg>
+            </a>
+            <a href="/quiz" class="btn btn-secondary btn-xl glow-btn"
+              style="background: rgba(0, 240, 255, 0.15); border-color: rgba(0, 240, 255, 0.4); color: #fff;">
+              <span>🎯 Take 26-Letter Quiz</span>
+            </a>
+          </div>
+
+          <!-- Feature badges list -->
+          <div class="cta-perks">
+            <div class="perk-item">
+              <span class="perk-check">✓</span>
+              <span>100% In-Browser HD Processing</span>
+            </div>
+            <div class="perk-item">
+              <span class="perk-check">✓</span>
+              <span>Zero Plugins or Downloads</span>
+            </div>
+            <div class="perk-item">
+              <span class="perk-check">✓</span>
+              <span>English, Hindi & Kannada Audio</span>
+            </div>
+            <div class="perk-item">
+              <span class="perk-check">✓</span>
+              <span>Full Dictionary Suggestions</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- =========================================================================
+       7. FOOTER
+       ========================================================================= -->
+  <footer class="site-footer">
+    <div class="container footer-container">
+      <div class="footer-brand">
+        <div class="brand-icon">
+          <svg viewBox="0 0 32 32" width="24" height="24" fill="none">
+            <rect width="32" height="32" rx="8" fill="url(#foot-grad)" />
+            <path d="M10 22v-8m4 8V8m4 14V11m4 11v-6" stroke="#ffffff" stroke-width="2.5" stroke-linecap="round" />
+            <defs>
+              <linearGradient id="foot-grad" x1="0" y1="0" x2="32" y2="32" gradientUnits="userSpaceOnUse">
+                <stop stop-color="#00f0ff" />
+                <stop offset="1" stop-color="#7c3aed" />
+              </linearGradient>
+            </defs>
+          </svg>
+        </div>
+        <span class="footer-brand-name">ISL Detect</span>
+        <span class="footer-copy">MCA Major Project Demonstration</span>
+      </div>
+
+      <div class="footer-links">
+        <a href="#hero">Home</a>
+        <a href="#about">About ISL</a>
+        <a href="#how">How It Works</a>
+        <a href="#architecture">Architecture</a>
+        <a href="#vocabulary">Vocabulary</a>
+        <a href="/lessons">10 Video Lessons</a>
+        <a href="/quiz">26-Letter Quiz</a>
+        <a href="/predict" data-predict>Prediction Studio</a>
+      </div>
+
+      <div class="footer-bottom">
+        <p>© 2026 Indian Sign Language Detection & Multilingual Voice System. Built for Accessibility.</p>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Transition Loader Overlay -->
+  <div class="page-loader" id="pageLoader" role="status" aria-live="polite" hidden>
+    <div class="loader-spinner"></div>
+    <p class="loader-text">Launching Prediction Studio…</p>
+  </div>
+
+  <!-- Interactive ISL Sign Preview Modal -->
+  <div class="sign-modal" id="signModal" aria-hidden="true" role="dialog" aria-labelledby="modalSignTitle">
+    <div class="sign-modal-backdrop" id="signModalBackdrop"></div>
+    <div class="sign-modal-dialog">
+      <button class="sign-modal-close" id="signModalClose" aria-label="Close sign preview dialog">&times;</button>
+      <div class="sign-modal-header">
+        <div class="modal-badge-row">
+          <span class="modal-badge">Indian Sign Language (ISL)</span>
+          <span class="modal-badge modal-badge-cat" id="modalCategoryBadge">Alphabet</span>
+        </div>
+        <h3 class="sign-modal-title" id="modalSignTitle">Letter <span id="modalLetterHighlight">A</span> Sign</h3>
+        <p class="sign-modal-desc" id="modalSignDesc">Authentic manual gesture for Indian Sign Language communication.
+        </p>
+      </div>
+
+      <div class="sign-modal-body">
+        <div class="sign-image-wrapper">
+          <div class="sign-image-skeleton" id="signImageSkeleton">
+            <div class="spinner"></div>
+          </div>
+          <img src="" alt="ISL Sign Gesture" id="signModalImg" class="sign-modal-img" />
+        </div>
+        <div class="sign-gesture-info" id="signGestureInfo">
+          <div class="gesture-info-label">
+            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+              <circle cx="12" cy="12" r="10"></circle>
+              <line x1="12" y1="16" x2="12" y2="12"></line>
+              <line x1="12" y1="8" x2="12.01" y2="8"></line>
+            </svg>
+            <span>How to Form This Gesture</span>
+          </div>
+          <p class="gesture-info-text" id="modalGestureText">Gesture details loading...</p>
+        </div>
+      </div>
+
+      <div class="sign-modal-footer">
+        <div class="modal-nav-btns">
+          <button class="btn btn-secondary btn-sm" id="prevSignBtn" aria-label="Previous sign">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+              <polyline points="15 18 9 12 15 6"></polyline>
+            </svg>
+            <span>Prev</span>
+          </button>
+          <span class="modal-nav-counter" id="modalNavCounter">1 / 26</span>
+          <button class="btn btn-secondary btn-sm" id="nextSignBtn" aria-label="Next sign">
+            <span>Next</span>
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+              <polyline points="9 18 15 12 9 6"></polyline>
+            </svg>
+          </button>
+        </div>
+        <a href="/predict" class="btn btn-primary btn-sm glow-btn" data-predict>
+          <span>Try in Studio</span>
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+            <polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2" />
+          </svg>
+        </a>
+      </div>
+    </div>
+  </div>
+
+  <!-- JavaScript Logic -->
+  <script src="script.js"></script>
+</body>
+
+</html>

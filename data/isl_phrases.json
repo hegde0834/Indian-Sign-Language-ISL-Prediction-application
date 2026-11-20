@@ -1,0 +1,322 @@
+[
+  {
+    "id": 1,
+    "key": "hello_namaste",
+    "phrase": "Hello / Namaste",
+    "category": "Greeting",
+    "english": "Hello / Welcome",
+    "hindi": "नमस्ते / नमस्कार",
+    "kannada": "ನಮಸ್ಕಾರ / ಸುಸ್ವಾಗತ",
+    "instructor": "NCERT Official ISL Demonstrator",
+    "video_type": "real_human",
+    "youtube_id": "y1dFFm6Q0jk",
+    "embed_url": "https://www.youtube-nocookie.com/embed/y1dFFm6Q0jk?rel=0&modestbranding=1",
+    "start_time": 10,
+    "duration": "30s",
+    "badge": "Core Greeting",
+    "description": "The quintessential Indian Sign Language greeting and welcome. The human instructor joins both open flat palms smoothly at chest level in a respectful prayer/Namaste posture with a gentle forward head tilt and warm welcoming smile.",
+    "steps": [
+      "Raise both hands to mid-chest height with open flat palms facing one another.",
+      "Bring palms and fingers together smoothly at the sternum in a Namaste posture.",
+      "Gently tilt head forward with a warm, respectful facial expression."
+    ],
+    "components": {
+      "handshape": "Flat Open Palms (B-handshape)",
+      "location": "Center of Chest / Sternum",
+      "movement": "Hands meet at midline with slight forward extension",
+      "expression": "Warm smile, polite forward head bow"
+    },
+    "cultural_note": "In ISL, Namaste is both an informal 'hello' and a formal mark of respect when meeting elders, guests, and community members.",
+    "reference_url": "https://www.youtube.com/watch?v=y1dFFm6Q0jk",
+    "video": "/assets/videos/phrase_1.mp4",
+    "thumbnail": "/assets/videos/phrase_1_thumb.jpg"
+  },
+  {
+    "id": 2,
+    "key": "thank_you",
+    "phrase": "Thank You",
+    "category": "Courtesy",
+    "english": "Thank You",
+    "hindi": "धन्यवाद / शुक्रिया",
+    "kannada": "ಧನ್ಯವಾದಗಳು",
+    "instructor": "Talking Hands India Human Signer",
+    "video_type": "real_human",
+    "youtube_id": "Cgw3QD4TyZg",
+    "embed_url": "https://www.youtube-nocookie.com/embed/Cgw3QD4TyZg?rel=0&modestbranding=1",
+    "start_time": 25,
+    "duration": "25s",
+    "badge": "Essential Courtesy",
+    "description": "Universal expression of gratitude in Indian Sign Language. The human instructor touches fingertips of dominant open flat hand to chin/lower lip, then sweeps forward and slightly downward toward the viewer with an appreciative nod.",
+    "steps": [
+      "Place the fingertips of your dominant flat hand lightly against your chin or lower lip.",
+      "Glide your hand smoothly forward and slightly downward toward the person you are thanking.",
+      "Nod your head affirmatively with a grateful, polite facial expression."
+    ],
+    "components": {
+      "handshape": "Flat Palm, Fingers Together",
+      "location": "Chin / Lower Lip to Forward Signing Space",
+      "movement": "Forward and downward arc toward listener",
+      "expression": "Appreciative smile, affirmative nod"
+    },
+    "cultural_note": "Used universally across Indian deaf communities to express appreciation, relief, and polite closure.",
+    "reference_url": "https://www.youtube.com/watch?v=Cgw3QD4TyZg",
+    "video": "/assets/videos/phrase_2.mp4",
+    "thumbnail": "/assets/videos/phrase_2_thumb.jpg"
+  },
+  {
+    "id": 3,
+    "key": "how_are_you",
+    "phrase": "How Are You?",
+    "category": "Conversation",
+    "english": "How are you?",
+    "hindi": "आप कैसे हैं?",
+    "kannada": "ನೀವು ಹೇಗಿದ್ದೀರಾ?",
+    "instructor": "Nagendra Nayak (ISL Lesson 5)",
+    "video_type": "real_human",
+    "youtube_id": "sLqdPipf1UM",
+    "embed_url": "https://www.youtube-nocookie.com/embed/sLqdPipf1UM?rel=0&modestbranding=1",
+    "start_time": 85,
+    "duration": "30s",
+    "badge": "Conversation Starter",
+    "description": "The fundamental wellness inquiry. The human signer holds closed fists with thumbs pointing upward at chest height, twists wrists outward so palms face up, followed by pointing the index finger forward toward the person with questioning raised eyebrows.",
+    "steps": [
+      "Hold both hands as closed fists with thumbs pointing upward at chest height.",
+      "Rotate wrists outward so thumbs roll forward and palms face upward.",
+      "Point dominant index finger forward toward the person with raised, inquiring eyebrows."
+    ],
+    "components": {
+      "handshape": "Thumbs-Up Fists transitioning to Index Point",
+      "location": "Mid-Chest to Forward Space",
+      "movement": "Outward twist + Forward directional point",
+      "expression": "Inquisitive raised eyebrows, slight head tilt"
+    },
+    "cultural_note": "Facial grammar is critical in ISL questions: raised eyebrows signal a yes/no or open wellness inquiry.",
+    "reference_url": "https://www.youtube.com/watch?v=sLqdPipf1UM",
+    "video": "/assets/videos/phrase_3.mp4",
+    "thumbnail": "/assets/videos/phrase_3_thumb.jpg"
+  },
+  {
+    "id": 4,
+    "key": "i_am_fine",
+    "phrase": "I Am Fine / Good",
+    "category": "Conversation",
+    "english": "I am fine / I am good",
+    "hindi": "मैं ठीक हूँ",
+    "kannada": "ನಾನು ಆರಾಮಾಗಿದ್ದೇನೆ",
+    "instructor": "Pragya Gupta (ISL 101 Sign Medium)",
+    "video_type": "real_human",
+    "youtube_id": "VtbYvVDItvg",
+    "embed_url": "https://www.youtube-nocookie.com/embed/VtbYvVDItvg?start=45&rel=0&modestbranding=1",
+    "start_time": 115,
+    "duration": "25s",
+    "badge": "Positive Response",
+    "description": "The standard optimistic response to wellness inquiries. The signer taps their dominant index finger to the chest to indicate 'I / Me', followed by presenting a solid, firm thumbs-up moving forward with an affirmative head nod.",
+    "steps": [
+      "Point your dominant index finger toward your chest to indicate 'I / Me'.",
+      "Form a clean thumbs-up with dominant hand, thumb extended firmly upward.",
+      "Move the thumbs-up hand slightly forward and upward with a confident, cheerful nod."
+    ],
+    "components": {
+      "handshape": "Index Point -> Solid Thumbs-Up (A-handshape variant)",
+      "location": "Chest to Forward Signing Space",
+      "movement": "Self-referential point followed by positive push",
+      "expression": "Contented smile, affirmative head nod"
+    },
+    "cultural_note": "A strong thumbs-up with a head nod communicates good health, confidence, and readiness to interact.",
+    "reference_url": "https://www.youtube.com/watch?v=VtbYvVDItvg",
+    "video": "/assets/videos/phrase_4.mp4",
+    "thumbnail": "/assets/videos/phrase_4_thumb.jpg"
+  },
+  {
+    "id": 5,
+    "key": "what_is_your_name",
+    "phrase": "What Is Your Name?",
+    "category": "Introductions",
+    "english": "What is your name?",
+    "hindi": "आपका नाम क्या है?",
+    "kannada": "ನಿಮ್ಮ ಹೆಸರೇನು?",
+    "instructor": "CADRRE Certified Master Signer",
+    "video_type": "real_human",
+    "youtube_id": "gtEjG8cLMro",
+    "embed_url": "https://www.youtube-nocookie.com/embed/gtEjG8cLMro?start=42&rel=0&modestbranding=1",
+    "start_time": 42,
+    "duration": "30s",
+    "badge": "Introduction Question",
+    "description": "Essential introductory question. The human instructor points index finger forward toward the person ('YOU'), taps extended index and middle fingers crosswise twice ('NAME'), then extends open upturned palms with inquisitive facial grammar ('WHAT').",
+    "steps": [
+      "Point index finger forward at the listener ('YOU').",
+      "Extend index and middle fingers on both hands and tap them crosswise twice ('NAME').",
+      "Turn both palms face up and spread hands slightly outward with raised brows ('WHAT?')."
+    ],
+    "components": {
+      "handshape": "Index Point -> Two-Finger 'H' Cross-Tap -> Open Upturned Palms",
+      "location": "Neutral Signing Space in front of torso",
+      "movement": "Point -> Cross tap -> Upward palm open",
+      "expression": "Inquisitive furrowed or raised eyebrows, forward chin"
+    },
+    "cultural_note": "ISL follows topic-comment word order (YOU NAME WHAT?), placing the question word at the end.",
+    "reference_url": "https://www.youtube.com/watch?v=gtEjG8cLMro",
+    "video": "/assets/videos/phrase_5.mp4",
+    "thumbnail": "/assets/videos/phrase_5_thumb.jpg"
+  },
+  {
+    "id": 6,
+    "key": "my_name_is",
+    "phrase": "My Name Is...",
+    "category": "Introductions",
+    "english": "My name is [Name]",
+    "hindi": "मेरा नाम [...] है",
+    "kannada": "ನನ್ನ ಹೆಸರು [...]",
+    "instructor": "Bumper Clap (ISL 25 Words Signer)",
+    "video_type": "real_human",
+    "youtube_id": "OK7ppVdau8M",
+    "embed_url": "https://www.youtube-nocookie.com/embed/OK7ppVdau8M?start=15&rel=0&modestbranding=1",
+    "start_time": 58,
+    "duration": "30s",
+    "badge": "Self Introduction",
+    "description": "Essential sentence for introducing yourself. The signer places a flat open palm gently over the center of the chest ('MY'), taps index and middle fingers crosswise twice ('NAME'), then fingerspells the letters of their name.",
+    "steps": [
+      "Place flat open palm gently on the center of your chest ('MY').",
+      "Bring index and middle fingers together on both hands and tap them crosswise twice ('NAME').",
+      "Spell out the letters of your name using the 26 ISL manual alphabets."
+    ],
+    "components": {
+      "handshape": "Flat Palm (Chest) -> H-Handshape Tap -> Fingerspelling",
+      "location": "Chest to Eye/Chest Reading Level",
+      "movement": "Chest press -> Double tap -> Sequential letters",
+      "expression": "Friendly, welcoming eye contact"
+    },
+    "cultural_note": "After fingerspelling their name, Deaf signers in India often share a unique 'Sign Name' given by the community.",
+    "reference_url": "https://www.youtube.com/watch?v=OK7ppVdau8M",
+    "video": "/assets/videos/phrase_6.mp4",
+    "thumbnail": "/assets/videos/phrase_6_thumb.jpg"
+  },
+  {
+    "id": 7,
+    "key": "nice_to_meet_you",
+    "phrase": "Nice To Meet You",
+    "category": "Courtesy",
+    "english": "Nice to meet you",
+    "hindi": "आपसे मिलकर अच्छा लगा",
+    "kannada": "ನಿಮ್ಮನ್ನು ಭೇಟಿಯಾಗಲು ಸಂತೋಷವಾಗಿದೆ",
+    "instructor": "CADRRE Certified ISL Educators",
+    "video_type": "real_human",
+    "youtube_id": "Ucp5a38GXMM",
+    "embed_url": "https://www.youtube-nocookie.com/embed/Ucp5a38GXMM?start=20&rel=0&modestbranding=1",
+    "start_time": 22,
+    "duration": "25s",
+    "badge": "Polite Connection",
+    "description": "Polite greeting conclusion. The dominant open palm slides smoothly across the flat non-dominant palm ('NICE/GOOD'), both index fingers held upright converge together in front of the body until they touch ('MEET'), then point to the person ('YOU').",
+    "steps": [
+      "Glide dominant open flat palm smoothly across non-dominant palm ('NICE / GOOD').",
+      "Hold both index fingers straight up pointing toward ceiling and bring them together until knuckles touch ('MEET').",
+      "Point index finger gently toward the other person ('YOU')."
+    ],
+    "components": {
+      "handshape": "Flat Palms (Slide) -> Upright Index Fingers (Converge)",
+      "location": "Center Chest to Neutral Space",
+      "movement": "Smooth sliding stroke + Horizontal convergence",
+      "expression": "Warm engaging smile"
+    },
+    "cultural_note": "The two converging index fingers visually symbolize two individuals walking toward each other and meeting.",
+    "reference_url": "https://www.youtube.com/watch?v=Ucp5a38GXMM",
+    "video": "/assets/videos/phrase_7.mp4",
+    "thumbnail": "/assets/videos/phrase_7_thumb.jpg"
+  },
+  {
+    "id": 8,
+    "key": "please_help_me",
+    "phrase": "Please Help Me",
+    "category": "Emergency",
+    "english": "Please help me",
+    "hindi": "कृपया मेरी मदद करें",
+    "kannada": "ದಯವಿಟ್ಟು ನನಗೆ ಸಹಾಯ ಮಾಡಿ",
+    "instructor": "Goa Board of Education ISL Signer",
+    "video_type": "real_human",
+    "youtube_id": "CaWC4P765V8",
+    "embed_url": "https://www.youtube-nocookie.com/embed/CaWC4P765V8?rel=0&modestbranding=1",
+    "start_time": 150,
+    "duration": "30s",
+    "badge": "Urgent Assistance",
+    "description": "Indispensable emergency and assistance sentence. Non-dominant hand flat, palm facing up; dominant hand forms closed fist with thumb upright resting atop non-dominant palm. Lift both hands together moving inward toward chest with earnest expression.",
+    "steps": [
+      "Extend non-dominant hand flat with palm facing upward as a supportive platform.",
+      "Place dominant hand in a thumb-up fist directly onto the flat palm ('HELP').",
+      "Lift both hands simultaneously moving them inward toward yourself ('HELP ME')."
+    ],
+    "components": {
+      "handshape": "Flat Base Palm + Thumbs-Up Fist (A-shape)",
+      "location": "Lower Torso moving upward and inward to Chest",
+      "movement": "Inward upward lift toward signer",
+      "expression": "Earnest, pleading or urgent facial expression"
+    },
+    "cultural_note": "Moving the combined hands inward means 'help me'; moving them outward toward the other person means 'I help you'.",
+    "reference_url": "https://www.youtube.com/watch?v=CaWC4P765V8",
+    "video": "/assets/videos/phrase_8.mp4",
+    "thumbnail": "/assets/videos/phrase_8_thumb.jpg"
+  },
+  {
+    "id": 9,
+    "key": "where_is_washroom",
+    "phrase": "Where Is The Washroom?",
+    "category": "Practical",
+    "english": "Where is the washroom / bathroom?",
+    "hindi": "शौचालय कहाँ है?",
+    "kannada": "ಶೌಚಾಲಯ ಎಲ್ಲಿದೆ?",
+    "instructor": "Deaf Enabled Foundation (DEF)",
+    "video_type": "real_human",
+    "youtube_id": "SwGIw2creRA",
+    "embed_url": "https://www.youtube-nocookie.com/embed/SwGIw2creRA?rel=0&modestbranding=1",
+    "start_time": 60,
+    "duration": "30s",
+    "badge": "Practical Essential",
+    "description": "Crucial daily practical sentence. The human signer forms a 'T' or 'W' handshape with dominant hand, gently shaking side-to-side twice from the wrist ('TOILET/WASHROOM'), followed by turning both palms up with questioning look ('WHERE').",
+    "steps": [
+      "Form a 'T' handshape (thumb protruding between index and middle finger knuckles).",
+      "Gently shake the hand back and forth from the wrist twice ('TOILET / RESTROOM').",
+      "Open both hands with palms facing upward and shoulders slightly shrugged ('WHERE?')."
+    ],
+    "components": {
+      "handshape": "'T' or 'W' Handshape -> Open upturned palms",
+      "location": "Shoulder height to Lower Rib level",
+      "movement": "Wrist oscillation + Outward palm spread",
+      "expression": "Questioning eyebrows, slight shoulder shrug"
+    },
+    "cultural_note": "Universally recognized in public transport, colleges, and workplaces across India.",
+    "reference_url": "https://www.youtube.com/watch?v=SwGIw2creRA",
+    "video": "/assets/videos/phrase_9.mp4",
+    "thumbnail": "/assets/videos/phrase_9_thumb.jpg"
+  },
+  {
+    "id": 10,
+    "key": "good_morning_bye",
+    "phrase": "Good Morning / See You Again",
+    "category": "Greeting",
+    "english": "Good Morning / See you again",
+    "hindi": "शुभ प्रभात / फिर मिलेंगे",
+    "kannada": "ಶುಭೋದಯ / ಮತ್ತೆ ಸಿಗೋಣ",
+    "instructor": "ISLRTC (Govt. of India Official)",
+    "video_type": "real_human",
+    "youtube_id": "L37McuHckSI",
+    "embed_url": "https://www.youtube-nocookie.com/embed/L37McuHckSI?rel=0&modestbranding=1",
+    "start_time": 180,
+    "duration": "30s",
+    "badge": "Daily Parting",
+    "description": "Standard daytime greeting and parting sentence in ISL. Touch chin with flat fingertips and bring forward ('GOOD'), then raise dominant hand up from horizontal non-dominant arm like sunrise ('MORNING') / wave open palm followed by 'V' shape from eyes forward ('SEE YOU AGAIN').",
+    "steps": [
+      "Touch fingers to chin and push forward ('GOOD').",
+      "Rest non-dominant forearm horizontally while dominant hand rises up behind it like sunrise ('MORNING').",
+      "Form 'V' (two fingers) pointing outward from eyes and wave hand smoothly ('SEE YOU AGAIN / BYE')."
+    ],
+    "components": {
+      "handshape": "Flat Palm (Good) -> Sunrise Rise -> 'V' Sight Direction",
+      "location": "Chin to Chest to Eye level",
+      "movement": "Chin outward -> Vertical rise -> Outward look wave",
+      "expression": "Bright cheerful smile, direct eye contact"
+    },
+    "cultural_note": "A polite, positive closure honoring the visual bond between signers.",
+    "reference_url": "https://www.youtube.com/watch?v=L37McuHckSI",
+    "video": "/assets/videos/phrase_10.mp4",
+    "thumbnail": "/assets/videos/phrase_10_thumb.jpg"
+  }
+]

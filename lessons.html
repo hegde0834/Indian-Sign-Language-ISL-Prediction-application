@@ -1,0 +1,331 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>🎥Video Lessons – Indian Sign Language (ISL Detect)</title>
+  <meta name="description"
+    content="Learn 10 everyday basic phrases and sentences in Indian Sign Language (ISL) demonstrated by authentic certified human signers with slow-mo controls and trilingual vocalization.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Outfit:wght@600;700;800&display=swap"
+    rel="stylesheet">
+  <link rel="stylesheet" href="/lessons.css">
+</head>
+
+<body class="lessons-body">
+
+  <!-- =========================================================================
+       1. TOP APPLICATION NAVIGATION BAR
+       ========================================================================= -->
+  <header class="app-window-bar">
+    <div class="window-left">
+      <div class="window-dots" aria-hidden="true">
+        <span class="dot dot-red"></span>
+        <span class="dot dot-yellow"></span>
+        <span class="dot dot-green"></span>
+      </div>
+      <div class="lessons-nav-brand">
+        <a href="/" class="brand-link" title="Return to Home">
+          <svg viewBox="0 0 32 32" width="22" height="22" fill="none">
+            <rect width="32" height="32" rx="7" fill="url(#lessons-grad)" />
+            <path d="M10 22v-8m4 8V8m4 14V11m4 11v-6" stroke="#ffffff" stroke-width="2.2" stroke-linecap="round" />
+            <defs>
+              <linearGradient id="lessons-grad" x1="0" y1="0" x2="32" y2="32" gradientUnits="userSpaceOnUse">
+                <stop stop-color="#00f0ff" />
+                <stop offset="0.5" stop-color="#2563eb" />
+                <stop offset="1" stop-color="#7c3aed" />
+              </linearGradient>
+            </defs>
+          </svg>
+          <span class="brand-text">ISL Detect</span>
+        </a>
+        <span class="bar-divider">/</span>
+        <span class="page-title">🎥Video Lessons</span>
+      </div>
+    </div>
+
+    <div class="window-right">
+      <div class="instructor-badge">
+        <span>👤</span>
+        <span>Certified ISL Educators</span>
+      </div>
+      <a href="/quiz" class="btn-nav-link btn-nav-cyan">
+        <span>🎯 Sign Quiz</span>
+      </a>
+      <a href="/predict" class="btn-nav-link btn-nav-glass">
+        <span>⚡ Live Studio</span>
+      </a>
+      <a href="/" class="btn-nav-link btn-nav-glass">
+        <span>Home</span>
+      </a>
+    </div>
+  </header>
+
+  <!-- =========================================================================
+       2. MAIN CONTENT AREA
+       ========================================================================= -->
+  <main class="lessons-main-container">
+
+    <!-- Page Header / Hero Title -->
+    <section class="lessons-header">
+      <div class="lessons-header-tag">
+        <span>🎓 Authentic ISL Learning</span>
+      </div>
+      <h1 class="lessons-header-title">10 Basic Everyday Phrases in Indian Sign Language</h1>
+      <p class="lessons-header-desc">
+        Watch certified human educators demonstrate authentic Indian Sign Language gestures.
+        Includes high-definition playback, slow-motion controls, step-by-step gesture breakdowns,
+        and vocal pronunciations in English, Hindi (हिन्दी), and Kannada (ಕನ್ನಡ).
+      </p>
+    </section>
+
+    <!-- Category Filter Tabs -->
+    <nav class="lessons-filter-tabs" aria-label="Lesson Categories">
+      <button type="button" class="lesson-tab-btn active" data-filter="all">All Lessons (10)</button>
+      <button type="button" class="lesson-tab-btn" data-filter="Greeting">👋 Greetings</button>
+      <button type="button" class="lesson-tab-btn" data-filter="Conversation">💬 Conversation</button>
+      <button type="button" class="lesson-tab-btn" data-filter="Courtesy">🤝 Courtesy & Social</button>
+      <button type="button" class="lesson-tab-btn" data-filter="Introductions">🪪 Introductions</button>
+      <button type="button" class="lesson-tab-btn" data-filter="Emergency">🚨 Assistance & Practical</button>
+    </nav>
+
+    <!-- =========================================================================
+         3. SPOTLIGHT REAL HUMAN VIDEO DEMONSTRATION & LINGUISTIC PANEL
+         ========================================================================= -->
+    <section class="lesson-spotlight-card" id="lessonSpotlightCard" aria-label="Spotlight Video Player">
+
+      <!-- Left Column: Real Human Video Player & Tools -->
+      <div class="player-col">
+        <div class="video-frame-container">
+          <div class="video-hud-overlay">
+            <span class="hud-lesson-tag" id="spotlightLessonNum">Lesson 01 / 10</span>
+            <span class="hud-human-badge">👤 Real Human Signer</span>
+          </div>
+          <!-- Embedded Real Human Video Player -->
+          <iframe id="spotlightIframe"
+            src="https://www.youtube-nocookie.com/embed/y1dFFm6Q0jk?rel=0&modestbranding=1"
+            title="Real Human Indian Sign Language Lesson"
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+            allowfullscreen>
+          </iframe>
+        </div>
+
+        <!-- Video Helper Toolbar -->
+        <div class="player-toolbar">
+          <div class="toolbar-left">
+            <span class="speed-label">Playback Pacing:</span>
+            <button type="button" class="speed-pill-btn" data-speed="0.5"
+              title="Use YouTube gear icon to set 0.5x Slow-Motion">0.5x Slow-Mo</button>
+            <button type="button" class="speed-pill-btn active" data-speed="1.0" title="Normal 1.0x Speed">1.0x
+              Normal</button>
+            <button type="button" class="speed-pill-btn" data-speed="1.25" title="1.25x Paced">1.25x</button>
+          </div>
+          <div class="toolbar-right">
+            <a href="https://www.youtube.com/watch?v=y1dFFm6Q0jk" target="_blank" rel="noopener noreferrer"
+              class="ext-yt-link" id="extYtLink">
+              <span>Open on YouTube</span>
+              <span>↗</span>
+            </a>
+          </div>
+        </div>
+
+        <!-- Trilingual Neural Speech Pronunciation Bar -->
+        <div class="speech-bar">
+          <span class="speech-title">🔊 Listen Vocal Pronunciation:</span>
+          <div class="speech-buttons">
+            <button type="button" class="btn-speak" id="btnSpeakEnglish" title="Pronounce in English">
+              <span>🇬🇧</span>
+              <span>English</span>
+            </button>
+            <button type="button" class="btn-speak" id="btnSpeakHindi" title="Pronounce in Hindi">
+              <span>🇮🇳</span>
+              <span>हिन्दी</span>
+            </button>
+            <button type="button" class="btn-speak" id="btnSpeakKannada" title="Pronounce in Kannada">
+              <span>🇮🇳</span>
+              <span>ಕನ್ನಡ</span>
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Right Column: Gesture Anatomy & Signing Guide -->
+      <div class="guide-col">
+        <div class="guide-header-row">
+          <h2 class="guide-title" id="spotlightPhraseTitle">Hello / Namaste</h2>
+          <span class="guide-category-chip" id="spotlightCategoryBadge">Greeting</span>
+        </div>
+
+        <!-- Certified Human Instructor Badge -->
+        <div class="instructor-sign-badge" id="spotlightInstructorBadge">
+          <span>👤 Human Signer:</span>
+          <strong>NCERT Official ISL Demonstrator</strong>
+        </div>
+
+        <!-- Translations -->
+        <div class="translations-chips" id="spotlightTranslations">
+          <span class="trans-tag"><strong>English:</strong> Hello / Welcome</span>
+          <span class="trans-tag"><strong>Hindi:</strong> नमस्ते / नमस्कार</span>
+          <span class="trans-tag"><strong>Kannada:</strong> ನಮಸ್ಕಾರ / ಸುಸ್ವಾಗತ</span>
+        </div>
+
+        <p class="guide-desc" id="spotlightDesc">
+          The quintessential Indian Sign Language greeting and welcome. The human instructor joins both open flat palms
+          smoothly at chest level in a respectful prayer/Namaste posture with a gentle forward head tilt and warm
+          welcoming smile.
+        </p>
+
+        <!-- 4-Part Spatial Components -->
+        <div class="components-box">
+          <div class="components-header">ISL Spatial Anatomy Components</div>
+          <div class="components-grid" id="spotlightComponentsGrid">
+            <div class="comp-item">
+              <span class="comp-item-label">🖐️ Handshape</span>
+              <span class="comp-item-val">Flat Open Palms (B-handshape)</span>
+            </div>
+            <div class="comp-item">
+              <span class="comp-item-label">📍 Signing Location</span>
+              <span class="comp-item-val">Center of Chest / Sternum</span>
+            </div>
+            <div class="comp-item">
+              <span class="comp-item-label">🔄 Movement Dynamic</span>
+              <span class="comp-item-val">Hands meet at midline with slight extension</span>
+            </div>
+            <div class="comp-item">
+              <span class="comp-item-label">😊 Facial Expression</span>
+              <span class="comp-item-val">Warm smile, polite forward head bow</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Step-by-Step Instructions -->
+        <div class="steps-box">
+          <h3 class="steps-title">Step-by-Step Signing Technique:</h3>
+          <ol class="steps-ordered-list" id="spotlightStepsList">
+            <li>Raise both hands to mid-chest height with open flat palms facing one another.</li>
+            <li>Bring palms and fingers together smoothly at the sternum in a Namaste posture.</li>
+            <li>Gently tilt head forward with a warm, respectful facial expression.</li>
+          </ol>
+        </div>
+
+        <!-- Cultural Note -->
+        <div class="tip-card">
+          <div class="tip-icon">💡</div>
+          <div class="tip-content" id="spotlightCulturalNote">
+            In ISL, Namaste is both an informal 'hello' and a formal mark of respect when meeting elders, guests, and
+            community members.
+          </div>
+        </div>
+
+        <!-- Guide Action / Navigation Row -->
+        <div class="guide-nav-row">
+          <button type="button" class="btn-guide-nav" id="btnPrevLesson">← Previous Lesson</button>
+          <span class="nav-counter" id="lessonNavIndicator">1 of 10</span>
+          <button type="button" class="btn-guide-nav" id="btnNextLesson">Next Lesson →</button>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- =========================================================================
+         4. 10-LESSON INTERACTIVE CARDS GALLERY
+         ========================================================================= -->
+    <div class="grid-section-header">
+      <h3 class="grid-section-title">All 10 Real Human Video Lessons</h3>
+      <span class="grid-section-count" id="lessonsGridCount">Showing 10 Real Human Lessons</span>
+    </div>
+
+    <section class="lessons-grid" id="lessonsGrid" aria-label="All 10 ISL Lessons Grid">
+      <!-- Dynamically populated by lessons.js -->
+    </section>
+
+    <!-- =========================================================================
+         5. REAL HUMAN MASTERCLASS SERIES
+         ========================================================================= -->
+    <section class="masterclass-section">
+      <div class="masterclass-header">
+        <div class="masterclass-tag">🎓 Comprehensive Masterclass</div>
+        <h2 class="masterclass-title">Watch Full-Length Real Human ISL Courses</h2>
+        <p class="masterclass-subtitle">
+          Want to watch continuous conversations? Dive into these complete video tutorial lessons
+          taught by certified deaf educators and sign interpreters from CADRRE and ISLRTC.
+        </p>
+      </div>
+
+      <div class="masterclass-grid">
+        <!-- Masterclass 1: Introductions -->
+        <article class="masterclass-card">
+          <div class="masterclass-video-wrap">
+            <iframe src="https://www.youtube-nocookie.com/embed/gtEjG8cLMro?rel=0"
+              title="CADRRE Lesson 114: Basic Phrases & Introductions"
+              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+              allowfullscreen>
+            </iframe>
+          </div>
+          <div class="masterclass-card-body">
+            <span class="mc-badge">Lesson 114 • 8 Mins</span>
+            <h4 class="mc-title">Self-Introduction & Basic Social Phrases</h4>
+            <p class="mc-desc">Learn how to greet someone, say "Nice to meet you", share your name, and manage
+              conversational pacing.</p>
+          </div>
+        </article>
+
+        <!-- Masterclass 2: Common Phrases -->
+        <article class="masterclass-card">
+          <div class="masterclass-video-wrap">
+            <iframe src="https://www.youtube-nocookie.com/embed/CX1zo2gyNwg?rel=0"
+              title="CADRRE Lesson 119: Commonly Used Phrases in ISL"
+              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+              allowfullscreen>
+            </iframe>
+          </div>
+          <div class="masterclass-card-body">
+            <span class="mc-badge">Lesson 119 • 5 Mins</span>
+            <h4 class="mc-title">Commonly Used Daily Sentences</h4>
+            <p class="mc-desc">Covers polite responses, asking how someone is feeling, expressing "Thank you", and
+              everyday communication prompts.</p>
+          </div>
+        </article>
+
+        <!-- Masterclass 3: Conversation & Questions -->
+        <article class="masterclass-card">
+          <div class="masterclass-video-wrap">
+            <iframe src="https://www.youtube-nocookie.com/embed/64u1Iy3Pn9A?rel=0"
+              title="CADRRE Lesson 124: Starting a Conversation in ISL"
+              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+              allowfullscreen>
+            </iframe>
+          </div>
+          <div class="masterclass-card-body">
+            <span class="mc-badge">Lesson 124 • 6 Mins</span>
+            <h4 class="mc-title">Starting Conversations & Asking Inquiries</h4>
+            <p class="mc-desc">Essential questions for where you live, location inquiries (washroom, school, workplace),
+              and farewells.</p>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <!-- =========================================================================
+         6. PAGE FOOTER
+         ========================================================================= -->
+    <footer class="lessons-footer">
+      <div class="footer-nav-links">
+        <a href="/">Home</a>
+        <a href="/predict">Live Studio</a>
+        <a href="/quiz">26-Letter Quiz</a>
+        <a href="/lessons">Video Lessons</a>
+      </div>
+      <p class="footer-copy">© 2026 Indian Sign Language Detection & Multilingual Voice System. Built for Accessibility.
+      </p>
+    </footer>
+
+  </main>
+
+  <script src="/lessons.js"></script>
+</body>
+
+</html>
